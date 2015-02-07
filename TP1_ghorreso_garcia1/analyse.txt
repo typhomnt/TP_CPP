@@ -1,0 +1,7 @@
+Phase 2 :
+
+      Question 1 :
+      	 L'éxécution de Dvector x ; x = Dvector(3,1.); provoque une double free error alors que l'éxécution de Dvector x = Dvector(3,1.); ne donne pas d'erreur et il a le comportement attendu. 
+	Ceci s'explique par le fait que pour le deuxième programme, on crée x en appellant directement le constructeur Dvector(3,1.) alors que dans le premier programme, on crée x en appelant le constructeur par defaut puis l'instruction x = Dvector(3,1.);. Cette dernière instruction va créer une variable temporaire temp(Dvector(3,1.)) qui réserve une place en mémoire pour son champ vect(tableau de double) et affecte au vect de x la même adresse en mémoire. 
+	On a donc x.vect = temp(Dvector(3,1.)).vect. Or cette variable temporaire est détruite à la fin de cette instruction (on le voit notamment sur le terminal ou l'on peut observer un appel au destructeur). Par conséquent, x.vect pointe maintenant sur une case libérée et à la fin du programme le destructeur est une nouvelle fois appelé mais cette fois sur x. On essaye alors de libérer une case déja libérée d'où la double free error.      
+      	       
