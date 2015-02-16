@@ -70,6 +70,7 @@ class Dvector{
     
     Dvector& operator=(const Dvector& d);
 
+
  private:
     /**
      * Taille du vecteur
@@ -84,5 +85,7 @@ class Dvector{
     Dvector operator+(const Dvector& d1, const Dvector& d2);
 
     Dvector operator-(const Dvector& d1, const Dvector& d2);
+
+    Dvector operator-(const Dvector& d);
 
 #endif

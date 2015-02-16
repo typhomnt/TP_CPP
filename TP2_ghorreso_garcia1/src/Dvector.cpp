@@ -145,6 +145,14 @@ Dvector operator-(const Dvector& d1, const Dvector& d2){
 	return res;
 }
 
+Dvector operator-(const Dvector& d){
+	Dvector res(d);
+	for(int i = 0 ; i < res.size() ; i ++){
+		res.getVect()[i] = -res.getVect()[i];
+	}
+	return res;
+}
+
 Dvector& Dvector::operator=(const Dvector& d) {
 	delete [] this->vect;
 	this->vect = new double[d.sizeV];
@@ -157,6 +165,6 @@ int main(){
   Dvector d(3,1.);
   Dvector d2(4,5.);
   Dvector d3(4,2.);
-  d = d2 - d3;
+  d = -d3;
   d.display(std::cout);
  }
