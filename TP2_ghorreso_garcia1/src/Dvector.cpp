@@ -91,42 +91,72 @@ double& Dvector::operator()(int i){
 }
 
 
-void  Dvector::operator+=(double r){
+Dvector&  Dvector::operator+=(double r){
     for(int i = 0 ; i < this->size() ; i++)
 	   this->vect[i] += r;
+    return *this;
 }
 
-void  Dvector::operator-=(double r){
+Dvector&  Dvector::operator-=(double r){
     for(int i = 0 ; i < this->size() ; i++)
         this->vect[i] -= r;
+    return *this;
 }
 
-void  Dvector::operator*=(double r){
+Dvector&  Dvector::operator*=(double r){
     for(int i = 0 ; i < this->size() ; i++)
         this->vect[i] *= r;
+    return *this;
 }
 
-void  Dvector::operator/=(double r){
+Dvector&  Dvector::operator/=(double r){
     for(int i = 0 ; i < this->size() ; i++)
         this->vect[i] /= r;
+    return *this;
 }
 
-Dvector Dvector::operator+(const Dvector& d){
-    assert(this->sizeV == d.sizeV);
-    Dvector res(d.sizeV);
-    for (int i = 0; i < d.sizeV; i++)
-        res.vect[i] = this->vect[i] + d.vect[i];
-
-    return res;
+Dvector& Dvector::operator+=(const Dvector& d){
+	assert(this->size() == d.sizeV);
+	for(int i = 0 ; i < this->size() ; i++){
+		this->vect[i] += d.vect[i];
+	}
+	return *this;
 }
 
-void Dvector::operator=(const Dvector& d) {
-    *this = Dvector(d);
+Dvector& Dvector::operator-=(const Dvector& d){
+	assert(this->size() == d.sizeV);
+	for(int i = 0 ; i < this->size() ; i++){
+		this->vect[i] -= d.vect[i];
+	}
+	return *this;
+}
+
+Dvector operator+(const Dvector& d1, const Dvector& d2){
+	//assert(((Dvector)d1).size() == ((Dvector)d2).size());
+	Dvector res(d1);
+	res += d2;
+	return res;
+}
+
+Dvector operator-(const Dvector& d1, const Dvector& d2){
+	//assert(((Dvector)d1).size() == ((Dvector)d2).size());
+	Dvector res(d1);
+	res -= d2;
+	return res;
+}
+
+Dvector& Dvector::operator=(const Dvector& d) {
+	delete [] this->vect;
+	this->vect = new double[d.sizeV];
+	this->sizeV = d.sizeV;
+	memcpy(this->vect, d.vect, d.sizeV*sizeof(double));
+	return *this;
 }
 
 int main(){
   Dvector d(3,1.);
-  Dvector d2(5,5.);
-  d = d2;
+  Dvector d2(4,5.);
+  Dvector d3(4,2.);
+  d = d2 - d3;
   d.display(std::cout);
  }

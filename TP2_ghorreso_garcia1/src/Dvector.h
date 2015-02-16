@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 class Dvector{
  public:
@@ -54,17 +56,20 @@ class Dvector{
 
     double& operator()(int i);
 
-    void  operator+=(double r);
+    Dvector& operator+=(double r);
 
-    void  operator-=(double r);
+    Dvector& operator-=(double r);
 
-    void  operator*=(double r);
+    Dvector& operator*=(double r);
 
-    void  operator/=(double r);
+    Dvector& operator/=(double r);
 
-    Dvector operator+(const Dvector& d);
+    Dvector& operator+=(const Dvector& d);
 
-    void operator=(const Dvector& d);
+    Dvector& operator-=(const Dvector& d);
+    
+    Dvector& operator=(const Dvector& d);
+
  private:
     /**
      * Taille du vecteur
@@ -75,5 +80,9 @@ class Dvector{
      */
     double *vect;
 };
+
+    Dvector operator+(const Dvector& d1, const Dvector& d2);
+
+    Dvector operator-(const Dvector& d1, const Dvector& d2);
 
 #endif
