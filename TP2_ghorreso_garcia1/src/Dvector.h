@@ -70,6 +70,10 @@ class Dvector{
     
     Dvector& operator=(const Dvector& d);
 
+    bool operator==(const Dvector& d);
+
+    bool operator!=(const Dvector& d);
+
 
  private:
     /**
@@ -82,10 +86,10 @@ class Dvector{
     double *vect;
 };
 
-    Dvector operator+(const Dvector& d1, const Dvector& d2);
+Dvector operator+(const Dvector& d1, const Dvector& d2);
 
-    Dvector operator-(const Dvector& d1, const Dvector& d2);
+Dvector operator-(const Dvector& d1, const Dvector& d2);
 
-    Dvector operator-(const Dvector& d);
+Dvector operator-(const Dvector& d);
 
 #endif

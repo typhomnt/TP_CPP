@@ -161,10 +161,32 @@ Dvector& Dvector::operator=(const Dvector& d) {
 	return *this;
 }
 
+bool Dvector::operator==(const Dvector& d){
+	if(this->sizeV != d.sizeV)
+		return false;
+	for(int i = 0 ; i < this->sizeV ; i++){
+		if(this->vect[i] != d.vect[i])
+			return false;
+	}
+	return true;
+}
+
+bool Dvector::operator!=(const Dvector& d){
+	if(this->sizeV != d.sizeV)
+		return true;
+	for(int i = 0 ; i < this->sizeV ; i++){
+		if(this->vect[i] != d.vect[i])
+			return true;
+	}
+	return false;
+}
+
+
 int main(){
   Dvector d(3,1.);
   Dvector d2(4,5.);
-  Dvector d3(4,2.);
-  d = -d3;
+  Dvector d3(4,5.);
+  assert(d2 == d3);
+  assert(d != d2);
   d.display(std::cout);
  }
