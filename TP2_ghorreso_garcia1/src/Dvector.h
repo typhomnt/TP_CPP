@@ -42,14 +42,16 @@ class Dvector{
      * @param str : flux d'entree
      */
     void display(std::ostream& str) const;
+
+    void enter(std::istream& str) const;
     /**
      * @return tableau associe au vecteur
      */
-    double* getVect();
+    double* getVect() const;
     /**
      * @return taille du vecteur
      */
-    int size();
+    int size() const;
     /**
      * Associe a chaque element du tableau, une valeur aleatoire comprise
      * entre 0 et 1
@@ -94,6 +96,8 @@ Dvector operator-(const Dvector& d1, const Dvector& d2);
 
 Dvector operator-(const Dvector& d);
 
-std::ostream& operator<<(std::ostream& Out, const Dvector& d);
+std::ostream& operator<<(std::ostream& out, const Dvector& d);
+
+std::istream& operator>>(std::istream& in, const Dvector& d);
 
 #endif

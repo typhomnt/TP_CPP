@@ -66,14 +66,19 @@ Dvector::~Dvector(){
 
 void Dvector::display(std::ostream& str) const {
     for(int i = 0 ; i < this->sizeV ; i++)
-	str << this->vect[i] << std::endl;
+    	str << this->vect[i] << std::endl;
 }
 
-double* Dvector::getVect(){
+void Dvector::enter(std::istream& str) const {
+	for(int i = 0 ; i < this->sizeV ; i++)
+		str >> this->vect[i];
+}
+
+double* Dvector::getVect() const{
     return this->vect;
 }
 
-int Dvector::size(){
+int Dvector::size() const{
     return this->sizeV;
 }
 
@@ -133,6 +138,28 @@ Dvector& Dvector::operator-=(const Dvector& d){
 	return *this;
 }
 
+Dvector& Dvector::operator=(const Dvector& d) {
+	delete [] this->vect;
+	this->vect = new double[d.sizeV];
+	this->sizeV = d.sizeV;
+	memcpy(this->vect, d.vect, d.sizeV*sizeof(double));
+	return *this;
+}
+
+bool Dvector::operator==(const Dvector& d){
+	if(this->sizeV != d.sizeV)
+		return false;
+	for(int i = 0 ; i < this->sizeV ; i++){
+		if(this->vect[i] != d.vect[i])
+			return false;
+	}
+	return true;
+}
+
+bool Dvector::operator!=(const Dvector& d){
+	return !(*this == d);
+}
+
 Dvector operator+(const Dvector& d1, const Dvector& d2){
 	//assert(((Dvector)d1).size() == ((Dvector)d2).size());
 	Dvector res(d1);
@@ -155,33 +182,15 @@ Dvector operator-(const Dvector& d){
 	return res;
 }
 
-Dvector& Dvector::operator=(const Dvector& d) {
-	delete [] this->vect;
-	this->vect = new double[d.sizeV];
-	this->sizeV = d.sizeV;
-	memcpy(this->vect, d.vect, d.sizeV*sizeof(double));
-	return *this;
+std::ostream& operator<<(std::ostream& out, const Dvector& d) {
+	d.display(out);
+	return out;
 }
 
-std::ostream& operator<<(std::ostream& Out, const Dvector& d) {
-	d.display(Out);
-	return Out;
+std::istream& operator>>(std::istream& in, const Dvector& d) {
+	d.enter(in);
+	return in;
 }
-
-bool Dvector::operator==(const Dvector& d){
-	if(this->sizeV != d.sizeV)
-		return false;
-	for(int i = 0 ; i < this->sizeV ; i++){
-		if(this->vect[i] != d.vect[i])
-			return false;
-	}
-	return true;
-}
-
-bool Dvector::operator!=(const Dvector& d){
-	return !(*this == d);
-}
-
 
 int main(){
   Dvector d(3,1.);
@@ -189,5 +198,7 @@ int main(){
   Dvector d3(4,5.);
   assert(d2 == d3);
   assert(d != d2);
+  std::cout << "entrez 3 valeurs";
+  std::cin >> d;
   std::cout << d;
 }
