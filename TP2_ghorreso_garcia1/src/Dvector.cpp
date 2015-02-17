@@ -1,4 +1,6 @@
 #include <iostream>
+#include <istream>
+#include <ostream>
 #include <fstream>
 #include <cassert>
 #include "Dvector.h"
@@ -62,7 +64,7 @@ Dvector::~Dvector(){
     delete [] vect;
 }
 
-void Dvector::display(std::ostream& str){
+void Dvector::display(std::ostream& str) const {
     for(int i = 0 ; i < this->sizeV ; i++)
 	str << this->vect[i] << std::endl;
 }
@@ -161,10 +163,15 @@ Dvector& Dvector::operator=(const Dvector& d) {
 	return *this;
 }
 
+std::ostream& operator<<(std::ostream& Out, const Dvector& d) {
+	d.display(Out);
+	return Out;
+}
+
 int main(){
   Dvector d(3,1.);
   Dvector d2(4,5.);
   Dvector d3(4,2.);
   d = -d3;
-  d.display(std::cout);
+  std::cout << d;
  }

@@ -1,6 +1,8 @@
 #ifndef DVECTORH
 #define DVECTORH
 #include <iostream>
+#include <istream>
+#include <ostream>
 #include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
@@ -39,7 +41,7 @@ class Dvector{
      * sur un flux d'entree
      * @param str : flux d'entree
      */
-    void display(std::ostream& str);
+    void display(std::ostream& str) const;
     /**
      * @return tableau associe au vecteur
      */
@@ -87,5 +89,7 @@ class Dvector{
     Dvector operator-(const Dvector& d1, const Dvector& d2);
 
     Dvector operator-(const Dvector& d);
+
+    std::ostream& operator<<(std::ostream& Out, const Dvector& d);
 
 #endif
