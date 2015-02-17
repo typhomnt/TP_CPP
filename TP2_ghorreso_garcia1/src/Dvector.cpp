@@ -168,10 +168,26 @@ std::ostream& operator<<(std::ostream& Out, const Dvector& d) {
 	return Out;
 }
 
+bool Dvector::operator==(const Dvector& d){
+	if(this->sizeV != d.sizeV)
+		return false;
+	for(int i = 0 ; i < this->sizeV ; i++){
+		if(this->vect[i] != d.vect[i])
+			return false;
+	}
+	return true;
+}
+
+bool Dvector::operator!=(const Dvector& d){
+	return !(*this == d);
+}
+
+
 int main(){
   Dvector d(3,1.);
   Dvector d2(4,5.);
-  Dvector d3(4,2.);
-  d = -d3;
+  Dvector d3(4,5.);
+  assert(d2 == d3);
+  assert(d != d2);
   std::cout << d;
- }
+}
