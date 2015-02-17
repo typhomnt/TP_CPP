@@ -12,7 +12,7 @@ Dvector::Dvector(){
     this->isProp = true;
 }
 
-Dvector::Dvector(int dim, double val){
+Dvector::Dvector(const int dim, const double val){
     std::cout << "appel au constructeur avec dimension et "
 	"valeur initiale" << std::endl;
     this->vect = new double[dim];
@@ -33,7 +33,7 @@ Dvector::Dvector(const Dvector& d){
     this->isProp = d.isProp;
 }
 
-Dvector::Dvector(std::string file){
+Dvector::Dvector(const std::string file){
     std::cout << "appel au constructeur avec fichier" << std::endl;
     std::ifstream inputFile(file.c_str());
     this->isProp = true;
@@ -98,31 +98,31 @@ void Dvector::fillRandomly(){
     }
 }
 
-double& Dvector::operator()(int i){
+double& Dvector::operator()(const int i) const {
     assert(i >= 0 && i < this->size());
     return this->vect[i];
 }
 
 
-Dvector&  Dvector::operator+=(double r){
+Dvector&  Dvector::operator+=(const double r){
     for(int i = 0 ; i < this->size() ; i++)
 	   this->vect[i] += r;
     return *this;
 }
 
-Dvector&  Dvector::operator-=(double r){
+Dvector&  Dvector::operator-=(const double r){
     for(int i = 0 ; i < this->size() ; i++)
         this->vect[i] -= r;
     return *this;
 }
 
-Dvector&  Dvector::operator*=(double r){
+Dvector&  Dvector::operator*=(const double r){
     for(int i = 0 ; i < this->size() ; i++)
         this->vect[i] *= r;
     return *this;
 }
 
-Dvector&  Dvector::operator/=(double r){
+Dvector&  Dvector::operator/=(const double r){
     for(int i = 0 ; i < this->size() ; i++)
         this->vect[i] /= r;
     return *this;
@@ -159,7 +159,7 @@ Dvector& Dvector::operator=(const Dvector& d) {
 	return *this;
 }
 
-bool Dvector::operator==(const Dvector& d){
+bool Dvector::operator==(const Dvector& d) const {
 	if(this->sizeV != d.sizeV)
 		return false;
 	for(int i = 0 ; i < this->sizeV ; i++){
@@ -169,7 +169,7 @@ bool Dvector::operator==(const Dvector& d){
 	return true;
 }
 
-bool Dvector::operator!=(const Dvector& d){
+bool Dvector::operator!=(const Dvector& d) const {
 	return !(*this == d);
 }
 
@@ -205,7 +205,7 @@ std::istream& operator>>(std::istream& in, const Dvector& d) {
 	return in;
 }
 
-Dvector Dvector::view(bool copy, int start, int count){
+Dvector Dvector::view(bool copy, const int start, const int count) const {
 	if(this->sizeV == 0)
 		throw std::exception();
 	if(count == 0)
@@ -220,6 +220,7 @@ Dvector Dvector::view(bool copy, int start, int count){
 		return res;
 	} 
 	else {
+		// Res.vect pointe vers l'élément d'indice start de this->vect
 		res.vect = this->vect + start*sizeof(double);
 		res.isProp = false;
 		return res;
