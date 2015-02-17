@@ -20,7 +20,7 @@ class Dvector{
      * @param dim est la dimension du vecteur
      * @param val est la valeur par defaut des elements du vecteur
      */
-    Dvector(int dim, double val=0.0);
+    Dvector(const int dim, const double val=0.0);
     /**
      * Constructeur par copie
      * @param d : vecteur qui va etre copie
@@ -31,7 +31,7 @@ class Dvector{
      * vecteur de taille nulle est cree
      * @param file : fichier donne en entree
      */
-    Dvector(std::string file);
+    Dvector(const std::string file);
     /**
      * Destructeur
      */
@@ -60,15 +60,15 @@ class Dvector{
 
     bool isOwner() const;
 
-    double& operator()(int i);
+    double& operator()(const int i) const ;
 
-    Dvector& operator+=(double r);
+    Dvector& operator+=(const double r);
 
-    Dvector& operator-=(double r);
+    Dvector& operator-=(const double r);
 
-    Dvector& operator*=(double r);
+    Dvector& operator*=(const double r);
 
-    Dvector& operator/=(double r);
+    Dvector& operator/=(const double r);
 
     Dvector& operator+=(const Dvector& d);
 
@@ -76,11 +76,11 @@ class Dvector{
     
     Dvector& operator=(const Dvector& d);
 
-    bool operator==(const Dvector& d);
+    bool operator==(const Dvector& d) const;
 
-    bool operator!=(const Dvector& d);
+    bool operator!=(const Dvector& d) const;
 
-    Dvector view(bool copy, int start, int count);
+    Dvector view(bool copy, const int start, const int count) const;
 
 
  private:
@@ -107,6 +107,15 @@ Dvector operator-(double &r, const Dvector& d);
 Dvector operator*(double &r, const Dvector& d);
 
 Dvector operator/(double &r, const Dvector& d);
+
+Dvector operator+(const Dvector& d, double &r);
+
+Dvector operator-(const Dvector& d, double &r);
+
+Dvector operator*(const Dvector& d, double &r);
+
+Dvector operator/(const Dvector& d, double &r);
+
 
 Dvector operator-(const Dvector& d);
 
