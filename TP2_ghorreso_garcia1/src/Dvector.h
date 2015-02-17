@@ -100,6 +100,14 @@ Dvector operator+(const Dvector& d1, const Dvector& d2);
 
 Dvector operator-(const Dvector& d1, const Dvector& d2);
 
+Dvector operator+(double &r, const Dvector& d);
+
+Dvector operator-(double &r, const Dvector& d);
+
+Dvector operator*(double &r, const Dvector& d);
+
+Dvector operator/(double &r, const Dvector& d);
+
 Dvector operator-(const Dvector& d);
 
 std::ostream& operator<<(std::ostream& out, const Dvector& d);

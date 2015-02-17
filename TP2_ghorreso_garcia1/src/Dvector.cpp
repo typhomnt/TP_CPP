@@ -123,9 +123,10 @@ Dvector&  Dvector::operator*=(double r){
 }
 
 Dvector&  Dvector::operator/=(double r){
-    for(int i = 0 ; i < this->size() ; i++)
-        this->vect[i] /= r;
-    return *this;
+	assert(r != 0);
+	for(int i = 0 ; i < this->size() ; i++)
+		this->vect[i] /= r;
+	return *this;
 }
 
 Dvector& Dvector::operator+=(const Dvector& d){
@@ -194,6 +195,51 @@ Dvector operator-(const Dvector& d){
 	}
 	return res;
 }
+
+Dvector operator+(double &r, const Dvector& d){
+	Dvector res(d);
+	res += r ;
+	return res;
+}
+
+Dvector operator-(double &r, const Dvector& d){
+	Dvector res(d);
+	res -= r ;
+	return res;
+}
+
+Dvector operator*(double &r, const Dvector& d){
+	Dvector res(d);
+	res *= r ;
+	return res;
+}
+
+Dvector operator/(double &r, const Dvector& d){
+	Dvector res(d);
+	res /= r ;
+	return res;
+}
+
+Dvector operator+(const Dvector &d, double &r){
+	Dvector res(d);
+	return r + res;
+}
+
+Dvector operator-(const Dvector &d, double &r){
+	Dvector res(d);
+	return r - res;
+}
+
+Dvector operator*(const Dvector &d, double &r){
+	Dvector res(d);
+	return r * res;
+}
+
+Dvector operator/(const Dvector &d, double &r){
+	Dvector res(d);
+	return r / res;
+}
+
 
 std::ostream& operator<<(std::ostream& out, const Dvector& d) {
 	d.display(out);
