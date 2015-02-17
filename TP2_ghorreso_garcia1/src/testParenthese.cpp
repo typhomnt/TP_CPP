@@ -167,13 +167,13 @@ void testFluxEntrant() {
 	// On lit le fichier dans v
 	testFile >> v;
 	cout << vRef << endl;
-	cout << v;
-	/*for (int i = 0; i < v.size(); i++) {
+	cout << v << endl;
+	for (int i = 0; i < v.size(); i++) {
 		cout << "i = " << i << endl;
 		cout << v.getData()[i] << " et " << vRef.getData()[i] << endl;
 		assert(v.getData()[i] == vRef.getData()[i]);
 		cout << i << " OK" << endl;
-	}*/
+	}
 	cout << "TEST DU FLUX ENTRANT : OK" << endl;
 }
 int main(){
