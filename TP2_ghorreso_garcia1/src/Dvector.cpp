@@ -7,9 +7,8 @@
 
 Dvector::Dvector(){
     std::cout << "appel au constructeur par defaut" << std::endl;
-    this->vect = new double[1];
-    this->vect[0] = 0.0;
-    this->sizeV = 1;
+    this->vect = NULL;
+    this->sizeV = 0;
 }
 
 Dvector::Dvector(int dim, double val){
@@ -20,6 +19,7 @@ Dvector::Dvector(int dim, double val){
 	this->vect[i] = val;
     }
     this->sizeV = dim;
+    this->isProp = true;
 }
 
 Dvector::Dvector(const Dvector& d){
@@ -29,11 +29,13 @@ Dvector::Dvector(const Dvector& d){
 	this->vect[i] = d.vect[i];
     }
     this->sizeV = d.sizeV;
+    this->isProp = d.isProp;
 }
 
 Dvector::Dvector(std::string file){
     std::cout << "appel au constructeur avec fichier" << std::endl;
     std::ifstream inputFile(file.c_str());
+    this->isProp = true;
     if(inputFile){
 	int taille(0);
 	double buff;
@@ -74,7 +76,7 @@ void Dvector::enter(std::istream& str) const {
 		str >> this->vect[i];
 }
 
-double* Dvector::getVect() const{
+const double* Dvector::getData() const{
     return this->vect;
 }
 
@@ -82,6 +84,9 @@ int Dvector::size() const{
     return this->sizeV;
 }
 
+bool Dvector::isOwner() const{
+	return this->isProp;
+}
 
 void Dvector::fillRandomly(){
     srand (time (NULL));
@@ -139,6 +144,12 @@ Dvector& Dvector::operator-=(const Dvector& d){
 }
 
 Dvector& Dvector::operator=(const Dvector& d) {
+	if(this->sizeV == 0){
+		this->isProp = d.isOwner();
+	}
+	else if(this->isProp == false && this->sizeV != d.sizeV){
+		throw std::exception();	
+	}
 	delete [] this->vect;
 	this->vect = new double[d.sizeV];
 	this->sizeV = d.sizeV;
@@ -161,14 +172,14 @@ bool Dvector::operator!=(const Dvector& d){
 }
 
 Dvector operator+(const Dvector& d1, const Dvector& d2){
-	//assert(((Dvector)d1).size() == ((Dvector)d2).size());
+	assert(d1.size() == d2.size());
 	Dvector res(d1);
 	res += d2;
 	return res;
 }
 
 Dvector operator-(const Dvector& d1, const Dvector& d2){
-	//assert(((Dvector)d1).size() == ((Dvector)d2).size());
+	assert(d1.size() == d2.size());
 	Dvector res(d1);
 	res -= d2;
 	return res;
@@ -177,7 +188,7 @@ Dvector operator-(const Dvector& d1, const Dvector& d2){
 Dvector operator-(const Dvector& d){
 	Dvector res(d);
 	for(int i = 0 ; i < res.size() ; i ++){
-		res.getVect()[i] = -res.getVect()[i];
+		res(i) = -res.getData()[i];
 	}
 	return res;
 }
@@ -192,13 +203,35 @@ std::istream& operator>>(std::istream& in, const Dvector& d) {
 	return in;
 }
 
+Dvector Dvector::view(bool copy, int start, int count){
+	if(this->sizeV == 0)
+		throw std::exception();
+	if(count == 0)
+		throw std::exception();
+	if(start < 0 || start + count > this->sizeV - 1)
+		throw std::exception();
+	Dvector res(count);
+	if(copy == true){
+		for(int i = 0 ; i < count ; i++)
+			res.vect[i] = this->vect[i + start];
+		res.isProp = false;
+		return res;
+	} 
+	else {
+		res.vect = this->vect + start*sizeof(double);
+		res.isProp = false;
+		return res;
+	}
+}
+
 int main(){
   Dvector d(3,1.);
   Dvector d2(4,5.);
   Dvector d3(4,5.);
   assert(d2 == d3);
   assert(d != d2);
-  std::cout << "entrez 3 valeurs";
-  std::cin >> d;
-  std::cout << d;
+  //std::cout << "entrez 3 valeurs";
+  //std::cin >> d;
+  //std::cout << d;
+  (-d2).display(std::cout);
 }
