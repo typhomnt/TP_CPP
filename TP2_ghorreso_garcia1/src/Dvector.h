@@ -47,7 +47,7 @@ class Dvector{
     /**
      * @return tableau associe au vecteur
      */
-    double* getVect() const;
+    const double* getData() const;
     /**
      * @return taille du vecteur
      */
@@ -57,6 +57,8 @@ class Dvector{
      * entre 0 et 1
      */
     void fillRandomly();
+
+    bool isOwner() const;
 
     double& operator()(int i);
 
@@ -78,6 +80,8 @@ class Dvector{
 
     bool operator!=(const Dvector& d);
 
+    Dvector view(bool copy, int start, int count);
+
 
  private:
     /**
@@ -88,6 +92,8 @@ class Dvector{
      * Tableau associe au vecteur
      */
     double *vect;
+    
+    bool isProp;
 };
 
 Dvector operator+(const Dvector& d1, const Dvector& d2);

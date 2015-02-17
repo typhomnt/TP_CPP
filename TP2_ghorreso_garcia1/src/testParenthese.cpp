@@ -18,7 +18,7 @@ void testPlusDouble(){
 	Dvector v(5,3.5);
 	v += 2.3;
 	for (int i = 0; i < v.size(); i++) {
-		assert(v.getVect()[i] == 5.8);
+		assert(v.getData()[i] == 5.8);
 	}
 	cout << "TEST DE L'ADDITION AVEC UN DOUBLE : OK" << endl;
 }
@@ -27,7 +27,7 @@ void testMoinsDouble(){
 	Dvector v(5,3.5);
 	v -= 5.0;
 	for (int i = 0; i < v.size(); i++) {
-		assert(v.getVect()[i] == -1.5);
+		assert(v.getData()[i] == -1.5);
 	}
 	cout << "TEST DE LA SOUSTRACTION AVEC UN DOUBLE : OK" << endl;
 }
@@ -36,7 +36,7 @@ void testMultDouble(){
 	Dvector v(5,3.5);
 	v *= 2.0;
 	for (int i = 0; i < v.size(); i++) {
-		assert(v.getVect()[i] == 7.0);
+		assert(v.getData()[i] == 7.0);
 	}
 	cout << "TEST DE LA MULTIPLICATION AVEC UN DOUBLE : OK" << endl;
 }
@@ -45,7 +45,7 @@ void testDiviseDouble(){
 	Dvector v(5,3.5);
 	v /= 7.0;
 	for (int i = 0; i < v.size(); i++) {
-		assert(v.getVect()[i] == 0.5);
+		assert(v.getData()[i] == 0.5);
 	}
 	cout << "TEST DE LA DIVISION AVEC UN DOUBLE : OK" << endl;
 }
@@ -58,7 +58,7 @@ void testPlusDvector(){
 	Dvector v1Initial(v1);
 	v1 += v2;
 	for (int i = 0; i < v1.size(); i++) {
-		assert(v1.getVect()[i] == (v1Initial.getVect()[i] + v2.getVect()[i]));
+		assert(v1.getData()[i] == (v1Initial.getData()[i] + v2.getData()[i]));
 	}
 	cout << "TEST DE L'ADDITION AVEC UN DVECTOR : OK" << endl;
 }
@@ -71,7 +71,7 @@ void testMoinsDvector(){
 	Dvector v1Initial(v1);
 	v1 -= v2;
 	for (int i = 0; i < v1.size(); i++) {
-		assert(v1.getVect()[i] == (v1Initial.getVect()[i] - v2.getVect()[i]));
+		assert(v1.getData()[i] == (v1Initial.getData()[i] - v2.getData()[i]));
 	}
 	cout << "TEST DE LA SOUSTRACTION AVEC UN DVECTOR : OK" << endl;
 }
@@ -82,7 +82,7 @@ void testAffectation(){
 	v2.fillRandomly();
 	v1 = v2;
 	for (int i = 0; i < v1.size(); i++) {
-		assert(v1.getVect()[i] == v2.getVect()[i]);
+		assert(v1.getData()[i] == v2.getData()[i]);
 	}
 	cout << "TEST DE L'AFFECTATION : OK" << endl;
 }
@@ -116,7 +116,7 @@ void testPlusDeuxDvector() {
 	Dvector v(3);
 	v = v1 + v2;
 	for (int i = 0; i < v.size(); i++) {
-		assert(v.getVect()[i] == (v1.getVect()[i] + v2.getVect()[i]));
+		assert(v.getData()[i] == (v1.getData()[i] + v2.getData()[i]));
 	}
 	cout << "TEST DE L'ADDITION DE DEUX DVECTOR : OK" << endl;
 }
@@ -129,7 +129,7 @@ void testMoinsDeuxDvector() {
 	Dvector v(3);
 	v = v1 - v2;
 	for (int i = 0; i < v.size(); i++) {
-		assert(v.getVect()[i] == (v1.getVect()[i] - v2.getVect()[i]));
+		assert(v.getData()[i] == (v1.getData()[i] - v2.getData()[i]));
 	}
 	cout << "TEST DE LA SOUSTRACTION DE DEUX DVECTOR : OK" << endl;
 }
@@ -140,7 +140,7 @@ void testOpposeDvector() {
 	Dvector v(3);
 	v = -v1;
 	for (int i = 0; i < v.size(); i++) {
-		assert(v.getVect()[i] == -v1.getVect()[i]);
+		assert(v.getData()[i] == -v1.getData()[i]);
 	}
 	cout << "TEST DE L'OPPOSE D'UN DVECTOR : OK" << endl;
 }
@@ -170,8 +170,8 @@ void testFluxEntrant() {
 	cout << v;
 	/*for (int i = 0; i < v.size(); i++) {
 		cout << "i = " << i << endl;
-		cout << v.getVect()[i] << " et " << vRef.getVect()[i] << endl;
-		assert(v.getVect()[i] == vRef.getVect()[i]);
+		cout << v.getData()[i] << " et " << vRef.getData()[i] << endl;
+		assert(v.getData()[i] == vRef.getData()[i]);
 		cout << i << " OK" << endl;
 	}*/
 	cout << "TEST DU FLUX ENTRANT : OK" << endl;
