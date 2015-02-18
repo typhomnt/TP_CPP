@@ -196,50 +196,39 @@ Dvector operator-(const Dvector& d){
 	return res;
 }
 
-Dvector operator+(const double r, const Dvector& d){
+Dvector operator+(const Dvector& d, const double r){
 	Dvector res(d);
 	res += r ;
 	return res;
 }
 
-Dvector operator-(const double r, const Dvector& d){
+Dvector operator-(const Dvector& d, const double r){
 	Dvector res(d);
 	res -= r ;
 	return res;
 }
 
-Dvector operator*(const double r, const Dvector& d){
+Dvector operator*(const Dvector& d, const double r){
 	Dvector res(d);
 	res *= r ;
 	return res;
 }
 
-Dvector operator/(const double r, const Dvector& d){
+Dvector operator/(const Dvector& d, const double r){
 	Dvector res(d);
 	res /= r ;
 	return res;
 }
 
-Dvector operator+(const Dvector &d, const double r){
+Dvector operator+(const double r, const Dvector& d){
 	Dvector res(d);
-	return r + res;
+	return res + r ;
 }
 
-Dvector operator-(const Dvector &d, const double r){
+Dvector operator*(const double r, const Dvector& d){
 	Dvector res(d);
-	return r - res;
+	return res * r;
 }
-
-Dvector operator*(const Dvector &d, const double r){
-	Dvector res(d);
-	return r * res;
-}
-
-Dvector operator/(const Dvector &d, const double r){
-	Dvector res(d);
-	return r / res;
-}
-
 
 std::ostream& operator<<(std::ostream& out, const Dvector& d) {
 	d.display(out);
