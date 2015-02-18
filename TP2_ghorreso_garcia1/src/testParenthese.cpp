@@ -331,7 +331,7 @@ void testFluxEntrant() {
 }
 
 int main(){
-	/*testParenthese();
+	testParenthese();
 	testPlusDouble();
 	testMoinsDouble();
 	testDiviseDouble();
@@ -356,5 +356,5 @@ int main(){
 	testAffectationMemeTaille5();
 	testAffectationMemeTaille6();
 	testAffectationTailleDifferente1();
-	testAffectationTailleDifferente2()*/;
+	testAffectationTailleDifferente2();
 }

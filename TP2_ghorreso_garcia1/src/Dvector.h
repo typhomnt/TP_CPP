@@ -116,7 +116,6 @@ Dvector operator*(const Dvector& d, double &r);
 
 Dvector operator/(const Dvector& d, double &r);
 
-
 Dvector operator-(const Dvector& d);
 
 std::ostream& operator<<(std::ostream& out, const Dvector& d);
