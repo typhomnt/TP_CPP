@@ -100,21 +100,21 @@ Dvector operator+(const Dvector& d1, const Dvector& d2);
 
 Dvector operator-(const Dvector& d1, const Dvector& d2);
 
-Dvector operator+(double &r, const Dvector& d);
+Dvector operator+(const double r, const Dvector& d);
 
-Dvector operator-(double &r, const Dvector& d);
+Dvector operator-(const double r, const Dvector& d);
 
-Dvector operator*(double &r, const Dvector& d);
+Dvector operator*(const double r, const Dvector& d);
 
-Dvector operator/(double &r, const Dvector& d);
+Dvector operator/(const double r, const Dvector& d);
 
-Dvector operator+(const Dvector& d, double &r);
+Dvector operator+(const Dvector& d, const double r);
 
-Dvector operator-(const Dvector& d, double &r);
+Dvector operator-(const Dvector& d, const double r);
 
-Dvector operator*(const Dvector& d, double &r);
+Dvector operator*(const Dvector& d, const double r);
 
-Dvector operator/(const Dvector& d, double &r);
+Dvector operator/(const Dvector& d, const double r);
 
 Dvector operator-(const Dvector& d);
 

@@ -122,7 +122,7 @@ Dvector&  Dvector::operator*=(const double r){
     return *this;
 }
 
-Dvector&  Dvector::operator/=(double r){
+Dvector&  Dvector::operator/=(const double r){
 	assert(r != 0);
 	for(int i = 0 ; i < this->size() ; i++)
 		this->vect[i] /= r;
@@ -196,46 +196,46 @@ Dvector operator-(const Dvector& d){
 	return res;
 }
 
-Dvector operator+(double &r, const Dvector& d){
+Dvector operator+(const double r, const Dvector& d){
 	Dvector res(d);
 	res += r ;
 	return res;
 }
 
-Dvector operator-(double &r, const Dvector& d){
+Dvector operator-(const double r, const Dvector& d){
 	Dvector res(d);
 	res -= r ;
 	return res;
 }
 
-Dvector operator*(double &r, const Dvector& d){
+Dvector operator*(const double r, const Dvector& d){
 	Dvector res(d);
 	res *= r ;
 	return res;
 }
 
-Dvector operator/(double &r, const Dvector& d){
+Dvector operator/(const double r, const Dvector& d){
 	Dvector res(d);
 	res /= r ;
 	return res;
 }
 
-Dvector operator+(const Dvector &d, double &r){
+Dvector operator+(const Dvector &d, const double r){
 	Dvector res(d);
 	return r + res;
 }
 
-Dvector operator-(const Dvector &d, double &r){
+Dvector operator-(const Dvector &d, const double r){
 	Dvector res(d);
 	return r - res;
 }
 
-Dvector operator*(const Dvector &d, double &r){
+Dvector operator*(const Dvector &d, const double r){
 	Dvector res(d);
 	return r * res;
 }
 
-Dvector operator/(const Dvector &d, double &r){
+Dvector operator/(const Dvector &d, const double r){
 	Dvector res(d);
 	return r / res;
 }

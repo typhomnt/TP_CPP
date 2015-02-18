@@ -12,8 +12,8 @@ all : test
 	$(CXX) $(CXXFLAGS) -c $@ $< 
 
 clean :
-	rm $(EXECTEST)
 	rm *.o
+	rm $(EXECTEST)
 
 exectest : test
 	./testDvectorConstr1
