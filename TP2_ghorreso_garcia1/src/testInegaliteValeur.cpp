@@ -10,5 +10,5 @@ int main(){
 	Dvector v1(3,5.);
 	Dvector v2(3,4.);
 	assert(v1 != v2);
-	cout << "SECOND TEST DE L'INEGALITE (VALEUR DIFFERENTE) : OK" << endl	
+	cout << "SECOND TEST DE L'INEGALITE (VALEUR DIFFERENTE) : OK" << endl;	
 }
