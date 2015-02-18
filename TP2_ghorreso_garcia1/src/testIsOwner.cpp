@@ -7,8 +7,7 @@
 using namespace std;
 
 int main(){
-	Dvector v1(3,5.);
-	Dvector v2(3,4.);
-	assert(v1 != v2);
-	cout << "TEST DE L'INEGALITE (VALEUR DIFFERENTE) : OK" << endl;	
+	Dvector v(3);
+	assert(v.isOwner() == true);
+	cout << "TEST DE ISOWNER : OK" << endl;
 }

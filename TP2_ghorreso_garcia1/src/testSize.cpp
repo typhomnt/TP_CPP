@@ -6,9 +6,12 @@
 #include <sstream>
 using namespace std;
 
+void testSize() {
+	Dvector v(3, 6.8);
+	assert(v.size() == 3);
+	cout << "TEST DU SIZE : OK" << endl;
+}
+
 int main(){
-	Dvector v1(3,5.);
-	Dvector v2(3,4.);
-	assert(v1 != v2);
-	cout << "TEST DE L'INEGALITE (VALEUR DIFFERENTE) : OK" << endl;	
+	testSize();
 }

@@ -7,8 +7,9 @@
 using namespace std;
 
 int main(){
-	Dvector v1(3,5.);
-	Dvector v2(3,4.);
-	assert(v1 != v2);
-	cout << "TEST DE L'INEGALITE (VALEUR DIFFERENTE) : OK" << endl;	
+	Dvector v(3,6.5);
+	for (int i = 0; i < v.size(); i++) {
+		assert(v.getData()[i] == 6.5);
+	}
+	cout << "TEST DE GETDATA : OK" << endl;
 }
