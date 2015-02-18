@@ -12,8 +12,6 @@ int main(){
 	Dvector v2;
 	v2 = v1.view(false, 25, 50);
 	for (int i = 0; i < v2.size(); i++) {
-		//cout << v2.getData()[i] << " et " << v1.getData()[i+25] << endl;
-		//cout << &v2.getData()[i] << "et" << &v1.getData()[i+25] << endl;
 		assert(v2.getData()[i] == v1.getData()[i+25]);
 	}
 	assert(v2.isOwner() == false);

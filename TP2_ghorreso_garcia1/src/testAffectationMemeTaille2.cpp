@@ -7,9 +7,7 @@
 using namespace std;
 
 int main(){
-	cout << "cas 2" << endl;
 	Dvector a(100);
-	cout << "a.isProp = " << a.isOwner() << endl;
 	Dvector c(150);
 	c.fillRandomly();
 	Dvector b(c.view(true, 0, 100));
@@ -18,6 +16,5 @@ int main(){
 		assert(a.getData()[i] == b.getData()[i]);
 	}
 	assert(a.isOwner() == true);
-	cout << "b.isProp = " << b.isOwner() << endl;
 	cout << "TEST DE L'AFFECTATION D'UN DVECTOR DE MEME TAILLE (CAS 2) : OK" << endl;
 }
