@@ -64,7 +64,8 @@ Dvector::Dvector(const std::string file){
 
 Dvector::~Dvector(){
     std::cout << "appel au destructeur" << std::endl;
-    delete [] vect;
+    if(isProp)
+	    delete [] vect;
 }
 
 void Dvector::display(std::ostream& str) const {
@@ -256,7 +257,7 @@ Dvector Dvector::view(bool copy, const int start, const int count) const {
 	} 
 	else {
 		// Res.vect pointe vers l'élément d'indice start de this->vect
-		res.vect = this->vect + start*sizeof(double);
+		res.vect = this->vect + start*sizeof(double)/8;
 		res.isProp = false;
 		return res;
 	}
