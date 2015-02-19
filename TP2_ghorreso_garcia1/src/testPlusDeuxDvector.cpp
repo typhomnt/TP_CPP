@@ -14,7 +14,7 @@ int main(){
 	Dvector v(3);
 	v = v1 + v2;
 	for (int i = 0; i < v.size(); i++) {
-		assert(v.getData()[i] == (v1.getData()[i] + v2.getData()[i]));
+		assert(v(i) == (v1(i) + v2(i)));
 	}
 	cout << "TEST DE L'ADDITION DE DEUX DVECTOR : OK" << endl;
 }

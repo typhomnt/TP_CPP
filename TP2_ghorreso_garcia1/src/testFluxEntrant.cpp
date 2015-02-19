@@ -19,7 +19,7 @@ int main(){
 	// On lit le fichier dans v
 	testFile >> v;
 	for (int i = 0; i < v.size(); i++) {
-		assert(v.getData()[i] == vRef.getData()[i]);
+		assert(v(i) == vRef(i));
 	}
 	cout << "TEST DU FLUX ENTRANT : OK" << endl;
 }

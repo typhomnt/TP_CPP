@@ -10,8 +10,8 @@ void testFillRandomly(){
 	Dvector v(1000);
 	v.fillRandomly();
 	for(int i = 0; i < v.size(); i++) {
-		assert(v.getData()[i] >= 0);
-		assert(v.getData()[i] <= 1);
+		assert(v(i) >= 0);
+		assert(v(i) <= 1);
 	}
 	cout << "TEST DE FILLRANDOMLY : OK" << endl;
 }

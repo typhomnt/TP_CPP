@@ -13,7 +13,7 @@ int main(){
 	Dvector b(c.view(true, 0, 50));
 	a = b;
 	for (int i = 0; i < a.size(); i++) {
-		assert(a.getData()[i] == b.getData()[i]);
+		assert(a(i) == b(i));
 	}
 	assert(a.isOwner() == true);
 	cout << "TEST DE L'AFFECTATION D'UN DVECTOR DE TAILLE DIFFERENTE (CAS 2) : OK" << endl;
