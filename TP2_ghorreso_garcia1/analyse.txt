@@ -29,6 +29,8 @@ afin de factoriser du code nous avons utilisé :
      - l'opérateur -=(const Dvector& d) pour implémenter -(const Dvector& d1, const Dvector& d2);
      - l'opérateur ==(const Dvector& d) const pour implémenter !=(const Dvector& d) const;
      - l'opérateur =(const Dvector& d) const pour implémenter le constructeur par copie;
+     - la méthode display(std::ostream& str) const pour implémenter <<(std::ostream& out, const Dvector& d);
+     - la méthode enter(std::istream& str) const pour implémenter >>(std::istream& in, const Dvector& d); 
 
 pour ces cas ci nous avons privilégié la maintenabilité du code plutôt que la 
 performance puisque les seules recopies faites par les opérateurs sont des 
