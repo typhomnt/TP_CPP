@@ -25,12 +25,10 @@ Dvector::Dvector(const int dim, const double val){
 
 Dvector::Dvector(const Dvector& d){
     std::cout << "appel au constructeur par copie" << std::endl;
-    this->vect = new double[d.sizeV];
-    for(int i = 0; i < d.sizeV ; i++){
-    	this->vect[i] = d.vect[i];
-    }
     this->sizeV = d.sizeV;
     this->isProp = d.isProp;
+    this->vect = NULL;
+    *this = d ;
 }
 
 Dvector::Dvector(const std::string file){
@@ -153,7 +151,8 @@ Dvector& Dvector::operator=(const Dvector& d) {
 	else if(this->isProp == false && this->sizeV != d.sizeV){
 		throw std::exception();	
 	}
-	delete [] this->vect;
+	if(this->sizeV > 0 && this->vect != NULL)
+		delete [] this->vect;
 	this->vect = new double[d.sizeV];
 	this->sizeV = d.sizeV;
 	memcpy(this->vect, d.vect, d.sizeV*sizeof(double));
