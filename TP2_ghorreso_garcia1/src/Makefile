@@ -108,3 +108,49 @@ test : $(TESTS) Dvector.o
 	$(CXX) $(CXXFLAGS) -o testViewStartNegatif Dvector.o testViewStartNegatif.o
 	$(CXX) $(CXXFLAGS) -o testViewCountZero Dvector.o testViewCountZero.o
 	$(CXX) $(CXXFLAGS) -o testViewStartCountTropGrand Dvector.o testViewStartCountTropGrand.o
+
+valgrinds: test
+	valgrind ./testDvectorConstr1
+	valgrind ./testDvectorConstr2
+	valgrind ./testDvectorConstr3
+	valgrind ./testDvectorConstrFile
+	valgrind ./testDisplay
+	valgrind ./testGetData
+	valgrind ./testSize
+	valgrind ./testFillRandomly
+	valgrind ./testIsOwner
+	valgrind ./testParentheses
+	valgrind ./testPlusDouble
+	valgrind ./testMoinsDouble
+	valgrind ./testMultDouble
+	valgrind ./testDiviseDouble
+	valgrind ./testPlusDvector
+	valgrind ./testMoinsDvector 
+	valgrind ./testAffectationMemeTaille1 
+	valgrind ./testAffectationMemeTaille2 
+	valgrind ./testAffectationMemeTaille3 
+	valgrind ./testAffectationMemeTaille4 
+	valgrind ./testAffectationMemeTaille5 
+	valgrind ./testAffectationMemeTaille6 
+	valgrind ./testAffectationTailleDifferente1
+	valgrind ./testAffectationTailleDifferente2
+	valgrind ./testAffectationTailleDifferente3
+	valgrind ./testAffectationTailleDifferente4
+	valgrind ./testEgalite 
+	valgrind ./testInegaliteTaille 
+	valgrind ./testInegaliteValeur
+	valgrind ./testViewCopyFalse
+	valgrind ./testViewCopyTrue
+	valgrind ./testViewDvectorVide
+	valgrind ./testViewCountZero
+	valgrind ./testViewStartNegatif
+	valgrind ./testViewStartCountTropGrand
+	valgrind ./testPlusDeuxDvector
+	valgrind ./testMoinsDeuxDvector
+	valgrind ./testDvectorPlusDouble
+	valgrind ./testDvectorMoinsDouble
+	valgrind ./testDvectorMultDouble
+	valgrind ./testDvectorDiviseDouble
+	valgrind ./testDoublePlusDvector
+	valgrind ./testDoubleMultDvector   
+	valgrind ./testOpposeDvector 
