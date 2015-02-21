@@ -25,3 +25,6 @@ cleandoc:
 
 cleansource:
 	cd src/ ; make clean ;
+
+valgrinds:
+	cd src/ ; make valgrinds ;
