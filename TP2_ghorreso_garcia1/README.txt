@@ -1,24 +1,37 @@
 Groupe : Ghorreshi Omid, Garcia Maxime
 Filière : MMIS
 
-Phase 2 :
 
-Question 2 :
+L'objectif de ce TP est d'implémenter les differentes surchages d'opérateurs relatifs à la classe Dvector. Ces dernières sont implémentées au sein même de la classe Dvector. Il y a deux dossiers : un dossier src/ contenant le code source de la classe Dvector et des tests de cette classe; un dossier doc/ permettant de générer la documentation de la classe. Voici la liste des commandes utiles pour ce TP, à lancer à partir du répertoire TP2_ghorreso_garcia1 :
 
-la différence entre les opérateurs "Dvetor operator+ (Dvector a, Dvector b)" et "Dvetor operator+ (const Dvector &a, const Dvector &b)" est que ce dernier n'effectue pas de recopie des arguments a et b qui lui sont passés en paramètre car ce sont des reférences vers des Dvector. Pour indiquer que a et b ne seront pas modifiés dans le deuxième opérateur + on les munis du labal const pour indiquer qu'ils ne sont pas modifiable dans la fonction. Pour le premier opérateur cette action est inutile parce que ce ne sont pas les paramètres qui sont susceptibles d'être modifiés mais c'est leur recopie. Il y aura donc 3 objets créés dans le premier opérateur et seulement dans le deuxième.
+1) make (ou make all)
 
-Question 3 :
+Cette commande génère le dossier doc/html qui contient le fichier index.html permettant d'accéder à la documentation. La commande génère aussi les exécutables "test*" associés aux différents tests de la classe.
 
-afin de factoriser du code nous avons utilisé : 
+2) make check
 
-     - l'opérateur +=(const double r) pour implémenter +(const Dvector &d, const double r);
-     - l'opérateur -=(const double r) pour implémenter -(const Dvector &d, const double r);
-     - l'opérateur *=(const double r) pour implémenter *(const Dvector &d, const double r);
-     - l'opérateur /=(const double r) pour implémenter /(const Dvector &d, const double r);
-     - l'opérateur +(const Dvector& d, const double r) pour implémenter +(const double r, const Dvector& d);
-     - l'opérateur *(const Dvector& d, const double r) pour implémenter *(const double r, const Dvector& d);
-     - l'opérateur +=(const Dvector& d) pour implémenter +(const Dvector& d1, const Dvector& d2);
-     - l'opérateur -=(const Dvector& d) pour implémenter -(const Dvector& d1, const Dvector& d2);
-     - l'opérateur ==(const Dvector& d) const pour implémenter !=(const Dvector& d) const;
+Cette commande permet de vérifier la conformité du code fourni.
 
-pour ces cas ci nous avons prévilégié la maintenabilité du code plutôt que la performance puisque les seules recopies faites par les opérateurs sont des recopies de double, on peut donc estimer que les performances des opérateurs ne seront pas déteriorées.
+3) make doc
+
+Cette commande génère le dossier doc/html qui contient le fichier index.html permettant d'accéder à la documentation.
+
+4) make test
+
+Cette commande génère les exécutables "test*" associés aux différents tests de la classe.
+
+5) make exectest
+
+Cette commande exécute tous les tests sur la classe Dvector. Elle affiche "TEST DU ... : OK" pour chaque test réussi.
+
+6) make clean
+
+Cette commande fonctionne que si le dossier doc/html a été généré. Cette commande efface le dossier doc/html et les fichiers *.o, *.txt et les fichiers exécutables dans le dossier src/.
+
+7) make cleandoc
+
+Cette commande efface le dossier doc/html.
+
+8) make cleansource
+
+Cette commande est utile si on n'a pas généré le dossier doc/html et qu'on ne peut donc pas utiliser la commande "make clean". Cette commande efface les fichiers *.o, *.txt et les fichiers exécutables dans le dossier src/. 

@@ -5,7 +5,7 @@ all :
 	cd doc/ ; make ;
 
 check : 
-	cd ../ ; ./verifier.py TP1_ghorreso_garcia1 ;
+	cd ../ ; ./verifier.py TP2_ghorreso_garcia1 ;
 
 test :
 	cd src/ ; make ;
@@ -25,3 +25,6 @@ cleandoc:
 
 cleansource:
 	cd src/ ; make clean ;
+
+valgrinds:
+	cd src/ ; make valgrinds ;
