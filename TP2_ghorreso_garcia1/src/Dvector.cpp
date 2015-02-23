@@ -67,8 +67,12 @@ Dvector::~Dvector(){
 }
 
 void Dvector::display(std::ostream& str) const {
-    for(int i = 0 ; i < this->sizeV ; i++)
-    	str << this->vect[i] << std::endl;
+	if (this->sizeV == 0) {
+		str << "";
+	} else {
+    	for(int i = 0 ; i < this->sizeV ; i++)
+    		str << this->vect[i] << std::endl;
+    }
 }
 
 void Dvector::enter(std::istream& str) const {
@@ -89,7 +93,11 @@ bool Dvector::isOwner() const{
 }
 
 void Dvector::fillRandomly(){
-    srand (time (NULL));
+	static bool init = false;
+	if (!init) { 
+		srand (time (NULL));
+		init = true;
+	}
     double u;
     for(int i = 0; i < this->size(); i++){
     	u = (double)rand()/(double)RAND_MAX;
@@ -155,8 +163,17 @@ Dvector& Dvector::operator=(const Dvector& d) {
 		delete [] this->vect;
 	this->vect = new double[d.sizeV];
 	this->sizeV = d.sizeV;
-	memcpy(this->vect, d.vect, d.sizeV*sizeof(double));
+	if (!this->isProp) {
+		this->vect = d.vect;
+	} else {
+		memcpy(this->vect, d.vect, d.sizeV*sizeof(double));
+	}
 	// L'état isProp ne change pas
+	// Seconde implementation
+	/*
+	for (int i = 0; i < this->sizeV; i++)
+		this->vect[i] = d.vect[i];
+	*/
 	return *this;
 }
 
@@ -251,7 +268,7 @@ Dvector Dvector::view(bool copy, const int start, const int count) const {
 	if(copy == true){
 		for(int i = 0 ; i < count ; i++)
 			res.vect[i] = this->vect[i + start];
-		res.isProp = false;
+		res.isProp = true;
 		return res;
 	} 
 	else {
