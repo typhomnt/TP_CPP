@@ -15,6 +15,6 @@ int main(){
 	for (int i = 0; i < a.size(); i++) {
 		assert(a(i) == b(i));
 	}
-	assert(a.isOwner() == false);
+	assert(a.isOwner() == true);
 	cout << "TEST DE L'AFFECTATION D'UN DVECTOR DE MEME TAILLE (CAS 3) : OK" << endl;
 }

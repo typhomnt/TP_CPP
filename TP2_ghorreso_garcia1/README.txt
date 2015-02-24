@@ -35,3 +35,7 @@ Cette commande efface le dossier doc/html.
 8) make cleansource
 
 Cette commande est utile si on n'a pas généré le dossier doc/html et qu'on ne peut donc pas utiliser la commande "make clean". Cette commande efface les fichiers *.o, *.txt et les fichiers exécutables dans le dossier src/. 
+
+9) make valgrinds 
+
+cette commande lance valgrind sur tous les tests de la base de test ce trouvant dans src/
