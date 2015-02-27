@@ -8,6 +8,11 @@
 #include <stdio.h>
 #include <string.h>
 
+/**
+ * @file Dvector.h
+ *
+ * Classe definissant un vecteur d'elements de type double.
+ */
 class Dvector{
  public:
 	/**
