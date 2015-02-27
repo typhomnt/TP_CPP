@@ -48,7 +48,7 @@ class Dvector{
      * flux d'entree
      * @param str : flux d'entree dans lequel les valeurs sont stockées
      */
-    void enter(std::istream& str) const;
+    void enter(std::istream& str);
     /**
      * @return tableau associe au vecteur
      */
@@ -298,6 +298,6 @@ std::ostream& operator<<(std::ostream& out, const Dvector& d);
  * @param d : reference du Dvector
  * @return reference du flux d'entree resultant
  */
-std::istream& operator>>(std::istream& in, const Dvector& d);
+std::istream& operator>>(std::istream& in, Dvector& d);
 
 #endif
