@@ -233,6 +233,7 @@ Dvector operator*(const Dvector& d, const double r){
 }
 
 Dvector operator/(const Dvector& d, const double r){
+	assert(r != 0);
     Dvector res(d);
     res /= r ;
     return res;
