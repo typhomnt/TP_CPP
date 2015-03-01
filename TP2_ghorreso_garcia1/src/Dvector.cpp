@@ -64,21 +64,21 @@ Dvector::Dvector(const std::string file){
 Dvector::~Dvector(){
     std::cout << "appel au destructeur" << std::endl;
     if(isProp)
-	delete [] vect;
+    	delete [] vect;
 }
 
 void Dvector::display(std::ostream& str) const {
     if (this->sizeV == 0) {
-	str << "";
+    	str << "";
     } else {
     	for(int i = 0 ; i < this->sizeV ; i++)
-	    str << this->vect[i] << std::endl;
+    		str << this->vect[i] << std::endl;
     }
 }
 
 void Dvector::enter(std::istream& str) {
     for(int i = 0 ; i < this->sizeV ; i++)
-	str >> this->vect[i];
+    	str >> this->vect[i];
 }
 
 const double* Dvector::getData() const{
@@ -96,8 +96,8 @@ bool Dvector::isOwner() const{
 void Dvector::fillRandomly(){
     static bool init = false;
     if (!init) { 
-	srand (time (NULL));
-	init = true;
+    	srand (time (NULL));
+    	init = true;
     }
     double u;
     for(int i = 0; i < this->size(); i++){
@@ -133,14 +133,14 @@ Dvector&  Dvector::operator*=(const double r){
 Dvector&  Dvector::operator/=(const double r){
     assert(r != 0);
     for(int i = 0 ; i < this->size() ; i++)
-	this->vect[i] /= r;
+    	this->vect[i] /= r;
     return *this;
 }
 
 Dvector& Dvector::operator+=(const Dvector& d){
     assert(this->size() == d.sizeV);
     for(int i = 0 ; i < this->size() ; i++){
-	this->vect[i] += d.vect[i];
+    	this->vect[i] += d.vect[i];
     }
     return *this;
 }
@@ -148,23 +148,23 @@ Dvector& Dvector::operator+=(const Dvector& d){
 Dvector& Dvector::operator-=(const Dvector& d){
     assert(this->size() == d.sizeV);
     for(int i = 0 ; i < this->size() ; i++){
-	this->vect[i] -= d.vect[i];
+    	this->vect[i] -= d.vect[i];
     }
     return *this;
 }
 
 Dvector& Dvector::operator=(const Dvector& d) {
     if(this->sizeV == 0){
-	this->isProp = d.isOwner();
+    	this->isProp = d.isOwner();
     }
     else if(this->isProp == false && this->sizeV != d.sizeV){
-	throw std::exception();	
+    	throw std::exception();
     }
     if(this->sizeV > 0 && this->vect != NULL)
-	delete [] this->vect;
+    	delete [] this->vect;
     this->sizeV = d.sizeV;
     if (!this->isProp) {
-	this->vect = d.vect;
+    	this->vect = d.vect;
     } else {
 	this->vect = new double[d.sizeV];
 	memcpy(this->vect, d.vect, d.sizeV*sizeof(double));
@@ -173,17 +173,17 @@ Dvector& Dvector::operator=(const Dvector& d) {
     // Seconde implementation
     /*
       for (int i = 0; i < this->sizeV; i++)
-      this->vect[i] = d.vect[i];
+      	  this->vect[i] = d.vect[i];
     */
     return *this;
 }
 
 bool Dvector::operator==(const Dvector& d) const {
     if(this->sizeV != d.sizeV)
-	return false;
+    	return false;
     for(int i = 0 ; i < this->sizeV ; i++){
-	if(this->vect[i] != d.vect[i])
-	    return false;
+    	if(this->vect[i] != d.vect[i])
+    		return false;
     }
     return true;
 }
@@ -209,7 +209,7 @@ Dvector operator-(const Dvector& d1, const Dvector& d2){
 Dvector operator-(const Dvector& d){
     Dvector res(d);
     for(int i = 0 ; i < res.size() ; i ++){
-	res(i) = -res.getData()[i];
+    	res(i) = -res.getData()[i];
     }
     return res;
 }
@@ -260,24 +260,24 @@ std::istream& operator>>(std::istream& in, Dvector& d) {
 
 Dvector Dvector::view(bool copy, const int start, const int count) const {
     if(this->sizeV == 0)
-	throw std::logic_error("The Dvector must have a positive size");
+    	throw std::logic_error("The Dvector must have a positive size");
     if(count == 0)
-	throw std::out_of_range("count must be positive");
+    	throw std::out_of_range("count must be positive");
     if(start < 0 || start + count > this->sizeV - 1)
-	throw std::out_of_range("start or count + count out of range");
+    	throw std::out_of_range("start or (start + count) out of range");
     if(copy == true){
-	Dvector res1(count);
-	for(int i = 0 ; i < count ; i++)
-	    res1.vect[i] = this->vect[i + start];
-	res1.isProp = true;
-	return res1;
+    	Dvector res1(count);
+    	for(int i = 0 ; i < count ; i++)
+    		res1.vect[i] = this->vect[i + start];
+    	res1.isProp = true;
+    	return res1;
     } 
     else {
 	// Res.vect pointe vers l'élément d'indice start de this->vect
-	Dvector res2;
-	res2.vect = this->vect + start*sizeof(double)/8;
-	res2.isProp = false;
-	return res2;
+    	Dvector res2;
+    	res2.vect = this->vect + start*sizeof(double)/8;
+    	res2.isProp = false;
+    	return res2;
     }
 }
 
