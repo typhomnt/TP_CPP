@@ -123,7 +123,8 @@ valgrinds: test
 	valgrind ./testSize
 	valgrind ./testFillRandomly
 	valgrind ./testIsOwner
-	valgrind ./testParentheses
+	valgrind ./testParenthesesLecture
+	valgrind ./testParenthesesEcriture
 	valgrind ./testPlusDouble
 	valgrind ./testMoinsDouble
 	valgrind ./testMultDouble
