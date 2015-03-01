@@ -41,8 +41,8 @@ Dvector::Dvector(const std::string file){
     	double buff;
     	// On calcule le nombre de reels dans le fichier
     	while(!inputFile.eof()){
-	    inputFile >> buff;
-	    taille++;
+    		inputFile >> buff;
+    		taille++;
     	}
     	this->sizeV = taille - 1;
     	// On revient au debut du fichier
@@ -51,13 +51,13 @@ Dvector::Dvector(const std::string file){
     	this->vect = new double[this->sizeV];
     	int i(0);
     	while(!inputFile.eof()){
-	    inputFile >> this->vect[i];
-	    i++;
+    		inputFile >> this->vect[i];
+    		i++;
     	}
     }
     else {
     	this->vect = NULL;
-	this->sizeV = 0;
+    	this->sizeV = 0;
     }
 }
 
@@ -114,7 +114,7 @@ double& Dvector::operator()(const int i) const {
 
 Dvector&  Dvector::operator+=(const double r){
     for(int i = 0 ; i < this->size() ; i++)
-	this->vect[i] += r;
+    	this->vect[i] += r;
     return *this;
 }
 
@@ -166,8 +166,8 @@ Dvector& Dvector::operator=(const Dvector& d) {
     if (!this->isProp) {
     	this->vect = d.vect;
     } else {
-	this->vect = new double[d.sizeV];
-	memcpy(this->vect, d.vect, d.sizeV*sizeof(double));
+    	this->vect = new double[d.sizeV];
+    	memcpy(this->vect, d.vect, d.sizeV*sizeof(double));
     }
     // L'état isProp ne change pas
     // Seconde implementation
