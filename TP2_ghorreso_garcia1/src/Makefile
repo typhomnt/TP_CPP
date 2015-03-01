@@ -1,5 +1,5 @@
-TESTS = testDisplayVide.o testViewDvectorVide.o testViewCountZero.o testViewStartNegatif.o testViewStartCountTropGrand.o testAffectationTailleDifferente3.o testAffectationTailleDifferente4.o testDvectorPlusDouble.o testDvectorMoinsDouble.o testDvectorMultDouble.o testDvectorDiviseDouble.o testDoublePlusDvector.o testDoubleMultDvector.o testIsOwner.o testFillRandomly.o testSize.o testGetData.o testDisplay.o testDvectorConstrFile.o testDvectorConstr1.o testDvectorConstr2.o testDvectorConstr3.o testFluxEntrant.o testAffectationMemeTaille1.o testAffectationMemeTaille2.o testAffectationMemeTaille3.o testAffectationMemeTaille4.o testAffectationMemeTaille5.o testAffectationMemeTaille6.o testAffectationTailleDifferente1.o testAffectationTailleDifferente2.o testDiviseDouble.o testEgalite.o testFluxSortant.o testInegaliteTaille.o testInegaliteValeur.o testMoinsDeuxDvector.o testMoinsDouble.o testMoinsDvector.o testMultDouble.o testOpposeDvector.o testParentheses.o testPlusDeuxDvector.o  testPlusDouble.o testPlusDvector.o testViewCopyFalse.o testViewCopyTrue.o
-EXECTEST = testDisplayVide testViewDvectorVide testViewCountZero testViewStartNegatif testViewStartCountTropGrand testAffectationTailleDifferente3 testAffectationTailleDifferente4 testDvectorPlusDouble testDvectorMoinsDouble testDvectorMultDouble testDvectorDiviseDouble testDoublePlusDvector testDoubleMultDvector testIsOwner testFillRandomly testSize testGetData testDisplay testDvectorConstrFile testDvectorConstr1 testDvectorConstr2 testDvectorConstr3 testFluxEntrant testAffectationMemeTaille1 testAffectationMemeTaille2 testAffectationMemeTaille3 testAffectationMemeTaille4 testAffectationMemeTaille5 testAffectationMemeTaille6 testAffectationTailleDifferente1 testAffectationTailleDifferente2 testDiviseDouble testEgalite testFluxSortant testInegaliteTaille testInegaliteValeur testMoinsDeuxDvector testMoinsDouble testMoinsDvector testMultDouble testOpposeDvector testParentheses testPlusDeuxDvector  testPlusDouble testPlusDvector testViewCopyFalse testViewCopyTrue
+TESTS = testParenthesesEcriture.o testDisplayVide.o testViewDvectorVide.o testViewCountZero.o testViewStartNegatif.o testViewStartCountTropGrand.o testAffectationTailleDifferente3.o testAffectationTailleDifferente4.o testDvectorPlusDouble.o testDvectorMoinsDouble.o testDvectorMultDouble.o testDvectorDiviseDouble.o testDoublePlusDvector.o testDoubleMultDvector.o testIsOwner.o testFillRandomly.o testSize.o testGetData.o testDisplay.o testDvectorConstrFile.o testDvectorConstr1.o testDvectorConstr2.o testDvectorConstr3.o testFluxEntrant.o testAffectationMemeTaille1.o testAffectationMemeTaille2.o testAffectationMemeTaille3.o testAffectationMemeTaille4.o testAffectationMemeTaille5.o testAffectationMemeTaille6.o testAffectationTailleDifferente1.o testAffectationTailleDifferente2.o testDiviseDouble.o testEgalite.o testFluxSortant.o testInegaliteTaille.o testInegaliteValeur.o testMoinsDeuxDvector.o testMoinsDouble.o testMoinsDvector.o testMultDouble.o testOpposeDvector.o testParenthesesLecture.o testPlusDeuxDvector.o  testPlusDouble.o testPlusDvector.o testViewCopyFalse.o testViewCopyTrue.o
+EXECTEST = testParenthesesEcriture testDisplayVide testViewDvectorVide testViewCountZero testViewStartNegatif testViewStartCountTropGrand testAffectationTailleDifferente3 testAffectationTailleDifferente4 testDvectorPlusDouble testDvectorMoinsDouble testDvectorMultDouble testDvectorDiviseDouble testDoublePlusDvector testDoubleMultDvector testIsOwner testFillRandomly testSize testGetData testDisplay testDvectorConstrFile testDvectorConstr1 testDvectorConstr2 testDvectorConstr3 testFluxEntrant testAffectationMemeTaille1 testAffectationMemeTaille2 testAffectationMemeTaille3 testAffectationMemeTaille4 testAffectationMemeTaille5 testAffectationMemeTaille6 testAffectationTailleDifferente1 testAffectationTailleDifferente2 testDiviseDouble testEgalite testFluxSortant testInegaliteTaille testInegaliteValeur testMoinsDeuxDvector testMoinsDouble testMoinsDvector testMultDouble testOpposeDvector testParenthesesLecture testPlusDeuxDvector  testPlusDouble testPlusDvector testViewCopyFalse testViewCopyTrue
 CXX = g++
 CXXFLAGS = -Wall -g
 
@@ -26,7 +26,8 @@ exectest : test
 	./testSize
 	./testFillRandomly
 	./testIsOwner
-	./testParentheses
+	./testParenthesesLecture
+	./testParenthesesEcriture
 	./testPlusDouble
 	./testMoinsDouble
 	./testMultDouble
@@ -93,7 +94,8 @@ test : $(TESTS) Dvector.o
 	$(CXX) $(CXXFLAGS) -o testMoinsDvector Dvector.o testMoinsDvector.o
 	$(CXX) $(CXXFLAGS) -o testMultDouble Dvector.o testMultDouble.o
 	$(CXX) $(CXXFLAGS) -o testOpposeDvector Dvector.o testOpposeDvector.o
-	$(CXX) $(CXXFLAGS) -o testParentheses Dvector.o testParentheses.o
+	$(CXX) $(CXXFLAGS) -o testParenthesesLecture Dvector.o testParenthesesLecture.o
+	$(CXX) $(CXXFLAGS) -o testParenthesesEcriture Dvector.o testParenthesesEcriture.o
 	$(CXX) $(CXXFLAGS) -o testPlusDeuxDvector Dvector.o testPlusDeuxDvector.o
 	$(CXX) $(CXXFLAGS) -o testPlusDouble Dvector.o testPlusDouble.o
 	$(CXX) $(CXXFLAGS) -o testPlusDvector Dvector.o testPlusDvector.o
