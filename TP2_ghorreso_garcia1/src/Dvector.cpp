@@ -3,6 +3,7 @@
 #include <ostream>
 #include <fstream>
 #include <cassert>
+#include <stdexcept>
 #include "Dvector.h"
 
 Dvector::Dvector(){
@@ -259,11 +260,11 @@ std::istream& operator>>(std::istream& in, Dvector& d) {
 
 Dvector Dvector::view(bool copy, const int start, const int count) const {
     if(this->sizeV == 0)
-	throw std::exception();
+	throw std::logic_error("The Dvector must have a positive size");
     if(count == 0)
-	throw std::exception();
+	throw std::out_of_range("count must be positive");
     if(start < 0 || start + count > this->sizeV - 1)
-	throw std::exception();
+	throw std::out_of_range("start or count + count out of range");
     if(copy == true){
 	Dvector res1(count);
 	for(int i = 0 ; i < count ; i++)
