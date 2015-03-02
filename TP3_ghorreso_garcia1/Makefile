@@ -5,7 +5,7 @@ all :
 	cd doc/ ; make ;
 
 check : 
-	cd ../ ; ./verifier.py TP2_ghorreso_garcia1 ;
+	cd ../ ; ./verifier.py TP3_ghorreso_garcia1 ;
 
 test :
 	cd src/ ; make ;
