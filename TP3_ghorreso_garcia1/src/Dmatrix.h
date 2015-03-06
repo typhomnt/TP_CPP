@@ -34,6 +34,8 @@ class Dmatrix: public Darray {
 		 * Destructeur
 		 */
 		~Dmatrix();
+
+		double& operator()(const int line, const int column) const;
 };
 
 #endif
