@@ -1,6 +1,7 @@
 #ifndef DMATRIXH
 #define DMATRIXH
 #include "Darray.h"
+#include "Dvector.h"
 
 class Dmatrix: public Darray {
 	private:
@@ -35,7 +36,20 @@ class Dmatrix: public Darray {
 		 */
 		~Dmatrix();
 
+		double lines() const;
+		double columns() const;
+
 		double& operator()(const int line, const int column) const;
+
+		Dmatrix& operator=(const Dmatrix& mat);
+
+		Dmatrix& operator*=(const Dmatrix& mat);
+
+		Dmatrix& transpose();
 };
+
+Dmatrix operator*(const Dmatrix& mat1, const Dmatrix& mat2);
+
+Dvector operator*(const Dmatrix& mat, const Dvector& d);
 
 #endif
