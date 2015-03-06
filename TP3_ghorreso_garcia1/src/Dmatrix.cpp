@@ -30,9 +30,9 @@ Dmatrix::Dmatrix(const Dmatrix& mat): Darray(mat) {
 Dmatrix::~Dmatrix() {};
 
 double& Dmatrix::operator()(const int line, const int column) const {
-	if(line > m - 1)
+	if(line > m - 1 || line < 0)
 		throw std::out_of_range("line argument out of range");
-	if(column > n - 1) 
+	if(column > n - 1 || column < 0)
 		throw std::out_of_range("column argument out of range");
 	return this->data[column + line*n];
 }
