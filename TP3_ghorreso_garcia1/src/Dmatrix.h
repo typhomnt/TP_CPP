@@ -1,6 +1,7 @@
 #ifndef DMATRIXH
 #define DMATRIXH
 #include "Darray.h"
+#include "Dvector.h"
 
 class Dmatrix: public Darray {
 	private:
@@ -36,6 +37,10 @@ class Dmatrix: public Darray {
 		~Dmatrix();
 
 		double& operator()(const int line, const int column) const;
+		
+		Dvector line(const bool copy, const int pos) const;
+
+		Dmatrix& cholesky();
 };
 
 #endif

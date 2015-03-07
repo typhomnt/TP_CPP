@@ -37,4 +37,17 @@ double& Dmatrix::operator()(const int line, const int column) const {
 	return this->data[column + line*n];
 }
 
+Dvector Dmatrix::line(const bool copy, const int pos) const{
+	if(pos > m - 1 || pos < 0)
+		throw std::out_of_range("pos argument out of range");
+	Dvector d(this->view(copy, n*pos, n - 1 +n*pos));
+	return d;  
+}
 
+Dmatrix Dmatrix::cholesky(){
+	for(int i = 0 ; i < m ; i++){
+		for(int j = 0 ; j < n ; j++){
+			
+		}
+	}
+}
