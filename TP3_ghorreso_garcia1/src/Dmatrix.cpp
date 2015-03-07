@@ -101,7 +101,10 @@ Dmatrix& Dmatrix::operator*=(const Dmatrix& mat) {
 	if (this->n != mat.m)
 		throw std::invalid_argument("incorrect dimensions in multiplication");
 	Dmatrix copie(*this);
+	// On supprime le tableau de *this car il peut changer de taille
+	delete [] this->data;
 	this->n = mat.n;
+	this->data = new double[this->m*this->n];
 	for (int i = 0; i < this->m; i++) {
 		for (int j = 0; j < mat.n; j++) {
 			this->data[j+i*(this->n)] = 0;
@@ -116,9 +119,10 @@ Dmatrix& Dmatrix::operator*=(const Dmatrix& mat) {
 Dmatrix& Dmatrix::transpose() {
 	if (this->m != this->n)
 		throw std::invalid_argument("the object must be a square matrix");
+	Dmatrix copie(*this);
 	for (int i = 0; i < this->n; i++) {
 		for (int j = 0; j < this->m; j++) {
-			this->data[j+i*n] = this->data[i+j*n];
+			this->data[i+j*n] = copie.data[j+i*(copie.n)];
 		}
 	}
 	return *this;
