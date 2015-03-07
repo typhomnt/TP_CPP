@@ -147,8 +147,7 @@ Darray& Darray::operator-=(const Darray& d){
 Darray& Darray::operator=(const Darray& d) {
     if(this->sizeD == 0){
     	this->isProp = d.isOwner();
-    }
-    else if(this->isProp == false && this->sizeD != d.sizeD){
+    } else if(this->isProp == false && this->sizeD != d.sizeD){
     	throw std::exception();
     }
     if(this->sizeD > 0 && this->data != NULL)
@@ -256,7 +255,7 @@ Darray Darray::view(bool copy, const int start, const int count) const {
     }
     else {
 	// Res.data pointe vers l'élément d'indice start de this->data
-    	Darray res2;
+    	Darray res2(count);
     	res2.data = this->data + start*sizeof(double)/8;
     	res2.isProp = false;
     	return res2;

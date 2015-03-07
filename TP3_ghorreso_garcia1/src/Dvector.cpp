@@ -1,4 +1,5 @@
 #include "Dvector.h"
+#include "Darray.h"
 #include <fstream>
 #include <cassert>
 #include <stdexcept>
@@ -12,6 +13,10 @@ Dvector::Dvector(const Dvector& d): Darray(d) {};
 Dvector::Dvector(const std::string file): Darray(file) {};
 
 Dvector::~Dvector() {};
+
+Dvector Dvector::view(bool copy, const int start, const int count) const{
+	return this.view(copy, start, count);
+}
 
 double operator*(const Dvector& d1, const Dvector& d2) {
 	if (d1.size() != d2.size())

@@ -30,6 +30,8 @@ class Dvector: public Darray {
 		 * Destructeur
 		 */
 		~Dvector();
+		
+		Dvector view(bool copy, const int start, const int count) const;
 };
 
 double operator*(const Dvector& d1, const Dvector& d2);

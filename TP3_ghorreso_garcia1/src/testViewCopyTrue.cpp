@@ -1,0 +1,17 @@
+#include "Darray.h"
+#include <fstream>
+#include <string>
+#include <cassert>
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main(){
+	Darray v1(100);
+	v1.fillRandomly();
+	Darray v2(v1.view(true, 25, 50));
+	for (int i = 0; i < v2.size(); i++)
+		assert(v2(i) == v1(i+25));
+	assert(v2.isOwner() == true);
+	cout << "TEST DE VIEW AVEC COPY=TRUE : OK" << endl;
+}

@@ -13,6 +13,7 @@ class Dmatrix: public Darray {
 		 * nombre de colonnes de la matrice
 		 */
 		int n;
+
 	public:
 		/**
 		 * Constructeur par defaut
@@ -36,11 +37,27 @@ class Dmatrix: public Darray {
 		 */
 		~Dmatrix();
 
+		double lines() const;
+		double columns() const;
+
 		double& operator()(const int line, const int column) const;
 		
 		Dvector line(const bool copy, const int pos) const;
+		
+		Dvector column(const int pos) const;
+		
+		Dmatrix cholesky();
 
-		Dmatrix& cholesky();
+		Dmatrix& operator=(const Dmatrix& mat);
+
+		Dmatrix& operator*=(const Dmatrix& mat);
+
+		Dmatrix& transpose();
+
 };
+
+Dmatrix operator*(const Dmatrix& mat1, const Dmatrix& mat2);
+
+Dvector operator*(const Dmatrix& mat, const Dvector& d);
 
 #endif
