@@ -1,4 +1,5 @@
 #include "Dmatrix.h"
+#include "Dvector.h"
 #include <fstream>
 #include <cassert>
 #include <stdexcept>
@@ -58,10 +59,11 @@ Dmatrix& Dmatrix::operator*=(const Dmatrix& mat) {
 	if (this->n != mat.m)
 		throw std::invalid_argument("incorrect dimensions in multiplication");
 	Dmatrix copie(*this);
+	this->n = mat.n;
 	for (int i = 0; i < this->m; i++) {
-		for (int j = 0; j < this->n; j++) {
-			this->data[j+i*n] = 0;
-			for (int k = 0; k < this->n; k++) {
+		for (int j = 0; j < mat.n; j++) {
+			this->data[j+i*(this->n)] = 0;
+			for (int k = 0; k < mat.m; k++) {
 				this->data[j+i*n] += copie(i,k) * mat(k,j);
 			}
 		}
@@ -94,7 +96,7 @@ Dvector operator*(const Dmatrix& mat, const Dvector& d) {
 	Dvector res(d.size());
 	for (int i = 0; i < res.size(); i++) {
 		for (int k = 0; k < mat.columns(); k++) {
-			res(i) = mat(i,k)*d(k);
+			res(i) += mat(i,k)*d(k);
 		}
 	}
 	return res;

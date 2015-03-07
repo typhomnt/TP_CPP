@@ -1,4 +1,5 @@
 #include "Dvector.h"
+#include "Darray.h"
 #include <fstream>
 #include <cassert>
 #include <stdexcept>

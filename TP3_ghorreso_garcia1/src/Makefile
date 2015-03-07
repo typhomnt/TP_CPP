@@ -1,6 +1,5 @@
-TESTS = testParenthesesEcriture.o testDisplayVide.o testViewDvectorVide.o testViewCountZero.o testViewStartNegatif.o testViewStartCountTropGrand.o testAffectationTailleDifferente3.o testAffectationTailleDifferente4.o testDvectorPlusDouble.o testDvectorMoinsDouble.o testDvectorMultDouble.o testDvectorDiviseDouble.o testDoublePlusDvector.o testDoubleMultDvector.o testIsOwner.o testFillRandomly.o testSize.o testGetData.o testDisplay.o testDvectorConstrFile.o testDvectorConstr1.o testDvectorConstr2.o testDvectorConstr3.o testFluxEntrant.o testAffectationMemeTaille1.o testAffectationMemeTaille2.o testAffectationMemeTaille3.o testAffectationMemeTaille4.o testAffectationMemeTaille5.o testAffectationMemeTaille6.o testAffectationTailleDifferente1.o testAffectationTailleDifferente2.o testDiviseDouble.o testEgalite.o testFluxSortant.o testInegaliteTaille.o testInegaliteValeur.o testMoinsDeuxDvector.o testMoinsDouble.o testMoinsDvector.o testMultDouble.o testOpposeDvector.o testParenthesesLecture.o testPlusDeuxDvector.o  testPlusDouble.o testPlusDvector.o testViewCopyFalse.o testViewCopyTrue.o
-EXECTEST = testParenthesesEcriture testDisplayVide testViewDvectorVide testViewCountZero testViewStartNegatif testViewStartCountTropGrand testAffectationTailleDifferente3 testAffectationTailleDifferente4 testDvectorPlusDouble testDvectorMoinsDouble testDvectorMultDouble testDvectorDiviseDouble testDoublePlusDvector testDoubleMultDvector testIsOwner testFillRandomly testSize testGetData testDisplay testDvectorConstrFile testDvectorConstr1 testDvectorConstr2 testDvectorConstr3 testFluxEntrant testAffectationMemeTaille1 testAffectationMemeTaille2 testAffectationMemeTaille3 testAffectationMemeTaille4 testAffectationMemeTaille5 testAffectationMemeTaille6 testAffectationTailleDifferente1 testAffectationTailleDifferente2 testDiviseDouble testEgalite testFluxSortant testInegaliteTaille testInegaliteValeur testMoinsDeuxDvector testMoinsDouble testMoinsDvector testMultDouble testOpposeDvector testParenthesesLecture testPlusDeuxDvector  testPlusDouble testPlusDvector testViewCopyFalse testViewCopyTrue
-CXX = g++
+TESTS = testDvectorConstr1.o testDvectorConstr2.o testDvectorConstr3.o testDvectorConstrFile.o testDarrayConstr1.o testDarrayConstr2.o testDarrayConstr3.o testDarrayConstrFile.o testSize.o testGetData.o testIsOwner.o testDisplay.o testViewCopyFalse.o testViewCopyTrue.o testViewCountZero.o testViewDarrayVide.o testViewStartCountTropGrand.o testViewStartNegatif.o testParenthesesLecture.o testParenthesesEcriture.o testPlusDouble.o testMoinsDouble.o testMultDouble.o testDiviseDouble.o testPlusDarray.o testMoinsDarray.o testDarrayPlusDouble.o testDarrayMoinsDouble.o testDarrayMultDouble.o testDarrayDiviseDouble.o testDoublePlusDarray.o testDoubleMultDarray.o testPlusDeuxDarray.o testMoinsDeuxDarray.o testOpposeDarray.o testEgalite.o testInegaliteTaille.o testInegaliteValeur.o testAffectationMemeTaille1.o testAffectationMemeTaille2.o testAffectationMemeTaille3.o testAffectationMemeTaille4.o testAffectationMemeTaille5.o testAffectationMemeTaille6.o testAffectationTailleDifferente1.o testAffectationTailleDifferente2.o testAffectationTailleDifferente3.o testAffectationTailleDifferente4.o testProduitScalaireDvector.o testProduitScalaireDvectorErrorSize.o testProduitScalaireDvectorNullArgument.o testDmatrixConstr1.o testDmatrixConstr2.o testDmatrixConstr3.o testParenthesesDmatrixEcriture.o testParenthesesDmatrixLecture.o testLinesColumns.o testAffectationMemeTailleDmatrix.o testAffectationTailleDifferenteDmatrix.o testDmatrixMultDvector.o testDmatrixMultDvectorDmatrixNull.o testDmatrixMultDvectorDvectorNull.o testDmatrixMultDvectorErrorDimension.o testMultDeuxDmatrix.o testMultDmatrix.o testMultDmatrixErrorDimensions.o testMultDmatrixNullArgument.o
+EXECTEST = testDvectorConstr1 testDvectorConstr2 testDvectorConstr3 testDvectorConstrFile testDarrayConstr1 testDarrayConstr2 testDarrayConstr3 testDarrayConstrFile testSize testGetData testIsOwner testDisplay testViewCopyFalse testViewCopyTrue testViewCountZero testViewDarrayVide testViewStartCountTropGrand testViewStartNegatif testParenthesesLecture testParenthesesEcriture testPlusDouble testMoinsDouble testMultDouble testDiviseDouble testPlusDarray testMoinsDarray testDarrayPlusDouble testDarrayMoinsDouble testDarrayMultDouble testDarrayDiviseDouble testDoublePlusDarray testDoubleMultDarray testPlusDeuxDarray testMoinsDeuxDarray testOpposeDarray testEgalite testInegaliteTaille testInegaliteValeur testAffectationMemeTaille1 testAffectationMemeTaille2 testAffectationMemeTaille3 testAffectationMemeTaille4 testAffectationMemeTaille5 testAffectationMemeTaille6 testAffectationTailleDifferente1 testAffectationTailleDifferente2 testAffectationTailleDifferente3 testAffectationTailleDifferente4 testProduitScalaireDvector testProduitScalaireDvectorErrorSize testProduitScalaireDvectorNullArgument testDmatrixConstr1 testDmatrixConstr2 testDmatrixConstr3 testParenthesesDmatrixLecture testParenthesesDmatrixEcriture testLinesColumns testAffectationMemeTailleDmatrix testAffectationTailleDifferenteDmatrix testDmatrixMultDvector testDmatrixMultDvectorDmatrixNull testDmatrixMultDvectorDvectorNull testDmatrixMultDvectorErrorDimension testMultDmatrix testMultDmatrixNullArgument testMultDmatrixErrorDimensions testMultDeuxDmatrix
 CXXFLAGS = -Wall -g
 
 all : test
@@ -12,150 +11,141 @@ all : test
 	$(CXX) $(CXXFLAGS) -c $@ $< 
 
 clean :
-	rm *.o
-	rm $(EXECTEST)
+	rm *.o $(EXECTEST) *.txt
 
 exectest : test
-	./testDvectorConstr1
-	./testDvectorConstr2
-	./testDvectorConstr3
-	./testDvectorConstrFile
-	./testDisplay
-	./testDisplayVide
-	./testGetData
+	./testDarrayConstr1
+	./testDarrayConstr2
+	./testDarrayConstr3
+	./testDarrayConstrFile
 	./testSize
-	./testFillRandomly
+	./testGetData
 	./testIsOwner
+	./testDisplay
+	./testViewCopyFalse
+	./testViewCopyTrue
+	./testViewCountZero
+	./testViewDarrayVide
+	./testViewStartCountTropGrand
+	./testViewStartNegatif
 	./testParenthesesLecture
 	./testParenthesesEcriture
 	./testPlusDouble
 	./testMoinsDouble
 	./testMultDouble
 	./testDiviseDouble
-	./testPlusDvector
-	./testMoinsDvector 
-	./testAffectationMemeTaille1 
-	./testAffectationMemeTaille2 
-	./testAffectationMemeTaille3 
-	./testAffectationMemeTaille4 
-	./testAffectationMemeTaille5 
-	./testAffectationMemeTaille6 
+	./testPlusDarray
+	./testMoinsDarray
+	./testEgalite
+	./testInegaliteTaille
+	./testInegaliteValeur
+	./testAffectationMemeTaille1
+	./testAffectationMemeTaille2
+	./testAffectationMemeTaille3
+	./testAffectationMemeTaille4
+	./testAffectationMemeTaille5
+	./testAffectationMemeTaille6
 	./testAffectationTailleDifferente1
 	./testAffectationTailleDifferente2
 	./testAffectationTailleDifferente3
 	./testAffectationTailleDifferente4
-	./testEgalite 
-	./testInegaliteTaille 
-	./testInegaliteValeur
-	./testViewCopyFalse
-	./testViewCopyTrue
-	./testViewDvectorVide
-	./testViewCountZero
-	./testViewStartNegatif
-	./testViewStartCountTropGrand
-	./testPlusDeuxDvector
-	./testMoinsDeuxDvector
-	./testDvectorPlusDouble
-	./testDvectorMoinsDouble
-	./testDvectorMultDouble
-	./testDvectorDiviseDouble
-	./testDoublePlusDvector
-	./testDoubleMultDvector   
-	./testOpposeDvector 
+	./testDarrayPlusDouble
+	./testDarrayMoinsDouble
+	./testDarrayMultDouble
+	./testDarrayDiviseDouble
+	./testDoublePlusDarray
+	./testDoublePlusDarray
+	./testPlusDeuxDarray
+	./testMoinsDeuxDarray
+	./testOpposeDarray
+	./testDvectorConstr1
+	./testDvectorConstr2
+	./testDvectorConstr3
+	./testDvectorConstrFile
+	./testProduitScalaireDvector
+	./testProduitScalaireDvectorErrorSize
+	./testProduitScalaireDvectorNullArgument
+	./testDmatrixConstr1
+	./testDmatrixConstr2
+	./testDmatrixConstr3
+	./testParenthesesDmatrixLecture
+	./testParenthesesDmatrixEcriture
+	./testLinesColumns
+	./testAffectationMemeTailleDmatrix
+	./testAffectationTailleDifferenteDmatrix
+	./testDmatrixMultDvector
+	./testDmatrixMultDvectorDmatrixNull
+	./testDmatrixMultDvectorDvectorNull
+	./testDmatrixMultDvectorErrorDimension
 
-test : $(TESTS) Dvector.o
-	$(CXX) $(CXXFLAGS) -o testDvectorConstrFile Dvector.o testDvectorConstrFile.o
-	$(CXX) $(CXXFLAGS) -o testDvectorConstr1 Dvector.o testDvectorConstr1.o
-	$(CXX) $(CXXFLAGS) -o testDvectorConstr2 Dvector.o testDvectorConstr2.o 
-	$(CXX) $(CXXFLAGS) -o testDvectorConstr3 Dvector.o testDvectorConstr3.o
-	$(CXX) $(CXXFLAGS) -o testDisplay Dvector.o testDisplay.o
-	$(CXX) $(CXXFLAGS) -o testGetData Dvector.o testGetData.o
-	$(CXX) $(CXXFLAGS) -o testSize Dvector.o testSize.o
-	$(CXX) $(CXXFLAGS) -o testFillRandomly Dvector.o testFillRandomly.o
-	$(CXX) $(CXXFLAGS) -o testIsOwner Dvector.o testIsOwner.o
-	$(CXX) $(CXXFLAGS) -o testFluxEntrant Dvector.o testFluxEntrant.o
-	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille1 Dvector.o testAffectationMemeTaille1.o
-	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille2 Dvector.o testAffectationMemeTaille2.o
-	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille3 Dvector.o testAffectationMemeTaille3.o
-	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille4 Dvector.o testAffectationMemeTaille4.o
-	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille5 Dvector.o testAffectationMemeTaille5.o
-	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille6 Dvector.o testAffectationMemeTaille6.o
-	$(CXX) $(CXXFLAGS) -o testAffectationTailleDifferente1 Dvector.o testAffectationTailleDifferente1.o
-	$(CXX) $(CXXFLAGS) -o testAffectationTailleDifferente2 Dvector.o testAffectationTailleDifferente2.o
-	$(CXX) $(CXXFLAGS) -o testAffectationTailleDifferente3 Dvector.o testAffectationTailleDifferente3.o
-	$(CXX) $(CXXFLAGS) -o testAffectationTailleDifferente4 Dvector.o testAffectationTailleDifferente4.o
-	$(CXX) $(CXXFLAGS) -o testDiviseDouble Dvector.o testDiviseDouble.o
-	$(CXX) $(CXXFLAGS) -o testEgalite Dvector.o testEgalite.o
-	$(CXX) $(CXXFLAGS) -o testFluxSortant Dvector.o testFluxSortant.o
-	$(CXX) $(CXXFLAGS) -o testInegaliteTaille Dvector.o testInegaliteTaille.o
-	$(CXX) $(CXXFLAGS) -o testInegaliteValeur Dvector.o testInegaliteValeur.o
-	$(CXX) $(CXXFLAGS) -o testMoinsDeuxDvector Dvector.o testMoinsDeuxDvector.o
-	$(CXX) $(CXXFLAGS) -o testMoinsDouble Dvector.o testMoinsDouble.o
-	$(CXX) $(CXXFLAGS) -o testMoinsDvector Dvector.o testMoinsDvector.o
-	$(CXX) $(CXXFLAGS) -o testMultDouble Dvector.o testMultDouble.o
-	$(CXX) $(CXXFLAGS) -o testOpposeDvector Dvector.o testOpposeDvector.o
-	$(CXX) $(CXXFLAGS) -o testParenthesesLecture Dvector.o testParenthesesLecture.o
-	$(CXX) $(CXXFLAGS) -o testParenthesesEcriture Dvector.o testParenthesesEcriture.o
-	$(CXX) $(CXXFLAGS) -o testPlusDeuxDvector Dvector.o testPlusDeuxDvector.o
-	$(CXX) $(CXXFLAGS) -o testPlusDouble Dvector.o testPlusDouble.o
-	$(CXX) $(CXXFLAGS) -o testPlusDvector Dvector.o testPlusDvector.o
-	$(CXX) $(CXXFLAGS) -o testDvectorPlusDouble Dvector.o testDvectorPlusDouble.o
-	$(CXX) $(CXXFLAGS) -o testDvectorMoinsDouble Dvector.o testDvectorMoinsDouble.o
-	$(CXX) $(CXXFLAGS) -o testDvectorMultDouble Dvector.o testDvectorMultDouble.o
-	$(CXX) $(CXXFLAGS) -o testDvectorDiviseDouble Dvector.o testDvectorDiviseDouble.o
-	$(CXX) $(CXXFLAGS) -o testDoubleMultDvector Dvector.o testDoubleMultDvector.o
-	$(CXX) $(CXXFLAGS) -o testDoublePlusDvector Dvector.o testDoublePlusDvector.o
-	$(CXX) $(CXXFLAGS) -o testViewCopyFalse Dvector.o testViewCopyFalse.o	
-	$(CXX) $(CXXFLAGS) -o testViewCopyTrue Dvector.o testViewCopyTrue.o
-	$(CXX) $(CXXFLAGS) -o testViewDvectorVide Dvector.o testViewDvectorVide.o
-	$(CXX) $(CXXFLAGS) -o testViewStartNegatif Dvector.o testViewStartNegatif.o
-	$(CXX) $(CXXFLAGS) -o testViewCountZero Dvector.o testViewCountZero.o
-	$(CXX) $(CXXFLAGS) -o testViewStartCountTropGrand Dvector.o testViewStartCountTropGrand.o
-	$(CXX) $(CXXFLAGS) -o testDisplayVide Dvector.o testDisplayVide.o
+test : $(TESTS) Dvector.o Darray.o Dmatrix.o
+	$(CXX) $(CXXFLAGS) -o testDvectorConstr1 Dvector.o Darray.o testDvectorConstr1.o
+	$(CXX) $(CXXFLAGS) -o testDvectorConstr2 Dvector.o Darray.o testDvectorConstr2.o
+	$(CXX) $(CXXFLAGS) -o testDvectorConstr3 Dvector.o Darray.o testDvectorConstr3.o
+	$(CXX) $(CXXFLAGS) -o testDvectorConstrFile Dvector.o Darray.o testDvectorConstrFile.o
+	$(CXX) $(CXXFLAGS) -o testDarrayConstr1 Darray.o testDarrayConstr1.o
+	$(CXX) $(CXXFLAGS) -o testDarrayConstr2 Darray.o testDarrayConstr2.o
+	$(CXX) $(CXXFLAGS) -o testDarrayConstr3 Darray.o testDarrayConstr3.o
+	$(CXX) $(CXXFLAGS) -o testDarrayConstrFile Darray.o testDarrayConstrFile.o
+	$(CXX) $(CXXFLAGS) -o testSize Darray.o testSize.o
+	$(CXX) $(CXXFLAGS) -o testGetData Darray.o testGetData.o
+	$(CXX) $(CXXFLAGS) -o testIsOwner Darray.o testIsOwner.o
+	$(CXX) $(CXXFLAGS) -o testDisplay Darray.o testDisplay.o
+	$(CXX) $(CXXFLAGS) -o testViewCopyFalse Darray.o testViewCopyFalse.o
+	$(CXX) $(CXXFLAGS) -o testViewCopyTrue Darray.o testViewCopyTrue.o
+	$(CXX) $(CXXFLAGS) -o testViewCountZero Darray.o testViewCountZero.o
+	$(CXX) $(CXXFLAGS) -o testViewDarrayVide Darray.o testViewDarrayVide.o
+	$(CXX) $(CXXFLAGS) -o testViewStartCountTropGrand Darray.o testViewStartCountTropGrand.o
+	$(CXX) $(CXXFLAGS) -o testViewStartNegatif Darray.o testViewStartNegatif.o
+	$(CXX) $(CXXFLAGS) -o testParenthesesLecture Darray.o testParenthesesLecture.o
+	$(CXX) $(CXXFLAGS) -o testParenthesesEcriture Darray.o testParenthesesEcriture.o
+	$(CXX) $(CXXFLAGS) -o testPlusDouble Darray.o testPlusDouble.o
+	$(CXX) $(CXXFLAGS) -o testMoinsDouble Darray.o testMoinsDouble.o
+	$(CXX) $(CXXFLAGS) -o testMultDouble Darray.o testMultDouble.o
+	$(CXX) $(CXXFLAGS) -o testDiviseDouble Darray.o testDiviseDouble.o
+	$(CXX) $(CXXFLAGS) -o testPlusDarray Darray.o testPlusDarray.o
+	$(CXX) $(CXXFLAGS) -o testMoinsDarray Darray.o testMoinsDarray.o
+	$(CXX) $(CXXFLAGS) -o testDarrayPlusDouble Darray.o testDarrayPlusDouble.o
+	$(CXX) $(CXXFLAGS) -o testDarrayMoinsDouble Darray.o testDarrayMoinsDouble.o
+	$(CXX) $(CXXFLAGS) -o testDarrayMultDouble Darray.o testDarrayMultDouble.o
+	$(CXX) $(CXXFLAGS) -o testDarrayDiviseDouble Darray.o testDarrayDiviseDouble.o
+	$(CXX) $(CXXFLAGS) -o testDoublePlusDarray Darray.o testDoublePlusDarray.o
+	$(CXX) $(CXXFLAGS) -o testDoubleMultDarray Darray.o testDoubleMultDarray.o
+	$(CXX) $(CXXFLAGS) -o testPlusDeuxDarray Darray.o testPlusDeuxDarray.o
+	$(CXX) $(CXXFLAGS) -o testMoinsDeuxDarray Darray.o testMoinsDeuxDarray.o
+	$(CXX) $(CXXFLAGS) -o testOpposeDarray Darray.o testOpposeDarray.o
+	$(CXX) $(CXXFLAGS) -o testEgalite Darray.o testEgalite.o
+	$(CXX) $(CXXFLAGS) -o testInegaliteTaille Darray.o testInegaliteTaille.o
+	$(CXX) $(CXXFLAGS) -o testInegaliteValeur Darray.o testInegaliteValeur.o
+	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille1 Darray.o testAffectationMemeTaille1.o
+	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille2 Darray.o testAffectationMemeTaille2.o
+	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille3 Darray.o testAffectationMemeTaille3.o
+	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille4 Darray.o testAffectationMemeTaille4.o
+	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille5 Darray.o testAffectationMemeTaille5.o
+	$(CXX) $(CXXFLAGS) -o testAffectationMemeTaille6 Darray.o testAffectationMemeTaille6.o
+	$(CXX) $(CXXFLAGS) -o testAffectationTailleDifferente1 Darray.o testAffectationTailleDifferente1.o
+	$(CXX) $(CXXFLAGS) -o testAffectationTailleDifferente2 Darray.o testAffectationTailleDifferente2.o
+	$(CXX) $(CXXFLAGS) -o testAffectationTailleDifferente3 Darray.o testAffectationTailleDifferente3.o
+	$(CXX) $(CXXFLAGS) -o testAffectationTailleDifferente4 Darray.o testAffectationTailleDifferente4.o
+	$(CXX) $(CXXFLAGS) -o testProduitScalaireDvector Dvector.o Darray.o testProduitScalaireDvector.o
+	$(CXX) $(CXXFLAGS) -o testProduitScalaireDvectorErrorSize Dvector.o Darray.o testProduitScalaireDvectorErrorSize.o
+	$(CXX) $(CXXFLAGS) -o testProduitScalaireDvectorNullArgument Dvector.o Darray.o testProduitScalaireDvectorNullArgument.o
+	$(CXX) $(CXXFLAGS) -o testDmatrixConstr1 Dvector.o Dmatrix.o Darray.o testDmatrixConstr1.o
+	$(CXX) $(CXXFLAGS) -o testDmatrixConstr2 Dvector.o Dmatrix.o Darray.o testDmatrixConstr2.o
+	$(CXX) $(CXXFLAGS) -o testDmatrixConstr3 Dvector.o Dmatrix.o Darray.o testDmatrixConstr3.o
+	$(CXX) $(CXXFLAGS) -o testParenthesesDmatrixLecture Dvector.o Dmatrix.o Darray.o testParenthesesDmatrixLecture.o
+	$(CXX) $(CXXFLAGS) -o testParenthesesDmatrixEcriture Dvector.o Dmatrix.o Darray.o testParenthesesDmatrixEcriture.o
+	$(CXX) $(CXXFLAGS) -o testLinesColumns Dvector.o Dmatrix.o Darray.o testLinesColumns.o
+	$(CXX) $(CXXFLAGS) -o testAffectationMemeTailleDmatrix Dvector.o Dmatrix.o Darray.o testAffectationMemeTailleDmatrix.o
+	$(CXX) $(CXXFLAGS) -o testAffectationTailleDifferenteDmatrix Dvector.o Dmatrix.o Darray.o testAffectationTailleDifferenteDmatrix.o
+	$(CXX) $(CXXFLAGS) -o testDmatrixMultDvector Dvector.o Dmatrix.o Darray.o testDmatrixMultDvector.o
+	$(CXX) $(CXXFLAGS) -o testDmatrixMultDvectorDmatrixNull Dvector.o Dmatrix.o Darray.o testDmatrixMultDvectorDmatrixNull.o
+	$(CXX) $(CXXFLAGS) -o testDmatrixMultDvectorDvectorNull Dvector.o Dmatrix.o Darray.o testDmatrixMultDvectorDvectorNull.o
+	$(CXX) $(CXXFLAGS) -o testDmatrixMultDvectorErrorDimension Dvector.o Dmatrix.o Darray.o testDmatrixMultDvectorErrorDimension.o
+	$(CXX) $(CXXFLAGS) -o testMultDmatrix Dvector.o Dmatrix.o Darray.o testMultDmatrix.o
+	$(CXX) $(CXXFLAGS) -o testMultDmatrixNullArgument Dvector.o Dmatrix.o Darray.o testMultDmatrixNullArgument.o
+	$(CXX) $(CXXFLAGS) -o testMultDmatrixErrorDimensions Dvector.o Dmatrix.o Darray.o testMultDmatrixErrorDimensions.o
+	$(CXX) $(CXXFLAGS) -o testMultDeuxDmatrix Dvector.o Dmatrix.o Darray.o testMultDeuxDmatrix.o
 
 valgrinds: test
-	valgrind ./testDvectorConstr1
-	valgrind ./testDvectorConstr2
-	valgrind ./testDvectorConstr3
-	valgrind ./testDvectorConstrFile
-	valgrind ./testDisplay
-	valgrind ./testGetData
-	valgrind ./testSize
-	valgrind ./testFillRandomly
-	valgrind ./testIsOwner
-	valgrind ./testParenthesesLecture
-	valgrind ./testParenthesesEcriture
-	valgrind ./testPlusDouble
-	valgrind ./testMoinsDouble
-	valgrind ./testMultDouble
-	valgrind ./testDiviseDouble
-	valgrind ./testPlusDvector
-	valgrind ./testMoinsDvector 
-	valgrind ./testAffectationMemeTaille1 
-	valgrind ./testAffectationMemeTaille2 
-	valgrind ./testAffectationMemeTaille3 
-	valgrind ./testAffectationMemeTaille4 
-	valgrind ./testAffectationMemeTaille5 
-	valgrind ./testAffectationMemeTaille6 
-	valgrind ./testAffectationTailleDifferente1
-	valgrind ./testAffectationTailleDifferente2
-	valgrind ./testAffectationTailleDifferente3
-	valgrind ./testAffectationTailleDifferente4
-	valgrind ./testEgalite 
-	valgrind ./testInegaliteTaille 
-	valgrind ./testInegaliteValeur
-	valgrind ./testViewCopyFalse
-	valgrind ./testViewCopyTrue
-	valgrind ./testViewDvectorVide
-	valgrind ./testViewCountZero
-	valgrind ./testViewStartNegatif
-	valgrind ./testViewStartCountTropGrand
-	valgrind ./testPlusDeuxDvector
-	valgrind ./testMoinsDeuxDvector
-	valgrind ./testDvectorPlusDouble
-	valgrind ./testDvectorMoinsDouble
-	valgrind ./testDvectorMultDouble
-	valgrind ./testDvectorDiviseDouble
-	valgrind ./testDoublePlusDvector
-	valgrind ./testDoubleMultDvector   
-	valgrind ./testOpposeDvector 
+
