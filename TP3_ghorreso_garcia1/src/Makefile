@@ -77,6 +77,10 @@ exectest : test
 	./testDmatrixMultDvectorDmatrixNull
 	./testDmatrixMultDvectorDvectorNull
 	./testDmatrixMultDvectorErrorDimension
+	./testMultDmatrix
+	./testMultDmatrixNullArgument
+	./testMultDmatrixErrorDimensions
+	./testMultDeuxDmatrix
 	./testTranspose
 	./testTransposeDeuxFois
 	./testTransposeErrorDimensions
