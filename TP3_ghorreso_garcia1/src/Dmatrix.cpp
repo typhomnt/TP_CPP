@@ -74,12 +74,12 @@ Dmatrix Dmatrix::cholesky(){
 	double sum_prod;
 	for(int i = 0 ; i < m ; i++){
 		sum_square = 0;
-		for(int s = 0 ; s < i - 1 ; s++)
+		for(int s = 0 ; s < i ; s++)
 			sum_square += pow(L(i,s),2);
 		L(i,i) = sqrt((*this)(i,i) - sum_square);
 		for(int j = i + 1 ; j < m ; j++){
 			sum_prod = 0;
-			for(int s = 0 ; s < i - 1 ; s++)
+			for(int s = 0 ; s < i ; s++)
 				sum_prod += L(j,s)*L(i,s);
 			L(j,i) = ((*this)(j,i) - sum_prod)/L(i,i);
 			
