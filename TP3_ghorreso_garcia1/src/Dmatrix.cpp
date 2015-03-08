@@ -53,7 +53,7 @@ Dvector Dmatrix::line(const bool copy, const int pos) const{
 	Dvector d(this->size());
 	for(int i = 0 ; i < this->size() ; i++)
 		d(i) = (this->getData())[i];
-	return d.view(copy, n*pos, n - 1 +n*pos);
+	return d.view(copy, n*pos, n);
 }
 
 Dvector Dmatrix::column(const int pos) const{
@@ -100,7 +100,10 @@ Dmatrix& Dmatrix::operator*=(const Dmatrix& mat) {
 		throw std::invalid_argument("null argument in multiplication");
 	if (this->n != mat.m)
 		throw std::invalid_argument("incorrect dimensions in multiplication");
+	bool copProp = this->isProp;
+	this->isProp = true ;
 	Dmatrix copie(*this);
+	this->isProp = copProp;
 	// On supprime le tableau de *this car il peut changer de taille
 	delete [] this->data;
 	this->n = mat.n;
@@ -130,7 +133,7 @@ Dmatrix& Dmatrix::transpose() {
 
 Dmatrix operator*(const Dmatrix& mat1, const Dmatrix& mat2) {
 	Dmatrix res(mat1);
-	res *= mat1;
+	res *= mat2;
 	return res;
 }
 
