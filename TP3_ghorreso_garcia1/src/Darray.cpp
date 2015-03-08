@@ -255,7 +255,8 @@ Darray Darray::view(bool copy, const int start, const int count) const {
     }
     else {
 	// Res.data pointe vers l'élément d'indice start de this->data
-    	Darray res2(count);
+    	Darray res2;
+    	res2.sizeD = count;
     	res2.data = this->data + start*sizeof(double)/8;
     	res2.isProp = false;
     	return res2;
