@@ -226,6 +226,10 @@ valgrinds: test
 	valgrind ./testDmatrixMultDvectorDmatrixNull
 	valgrind ./testDmatrixMultDvectorDvectorNull
 	valgrind ./testDmatrixMultDvectorErrorDimension
+	valgrind ./testMultDmatrix
+	valgrind ./testMultDmatrixNullArgument
+	valgrind ./testMultDmatrixErrorDimensions
+	valgrind ./testMultDeuxDmatrix
 	valgrind ./testTranspose
 	valgrind ./testTransposeDeuxFois
 	valgrind ./testTransposeErrorDimensions

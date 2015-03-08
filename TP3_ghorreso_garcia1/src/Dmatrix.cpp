@@ -107,7 +107,8 @@ Dmatrix& Dmatrix::operator*=(const Dmatrix& mat) {
 	// On supprime le tableau de *this car il peut changer de taille
 	delete [] this->data;
 	this->n = mat.n;
-	this->data = new double[this->m*this->n];
+	this->sizeD = this->m*mat.n;
+	this->data = new double[this->sizeD];
 	for (int i = 0; i < this->m; i++) {
 		for (int j = 0; j < mat.n; j++) {
 			this->data[j+i*(this->n)] = 0;
