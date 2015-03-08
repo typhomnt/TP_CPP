@@ -69,6 +69,13 @@ Dvector Dmatrix::column(const int pos) const{
 Dmatrix Dmatrix::cholesky(){
 	if(m != n)
 		throw std::invalid_argument("The matrix should be a square one");
+	//On vérifie que la matrice est symétrique
+	for(int i = 0 ; i < m ; i++){
+		for(int j = 0 ; j < n ; j++){
+			if((*this)(i,j) != (*this)(j,i))
+				throw std::invalid_argument("The matrix should be a symetric one");
+		}
+	}
 	Dmatrix L(m,m);
 	double sum_square;
 	double sum_prod;
