@@ -8,19 +8,19 @@
 #include <string.h>
 #include "Triangle.h"
 
-template <typename T>
-template <typename C>
-class Maillage {
+template <typename T, template<typename,typename=std::allocator<T> > class C>
+	class Maillage {
  private:
  
-    C<T> mesh;
-
+	C<Triangle<T> > mesh;
+ 
  public:
-    Maillage(int m, int n, const Point<T>& origine);
-    const C<T>::iterator& beginiter();
-    const C<T>::iterator& enditer();
+ Maillage(int m, int n, const Point<T>& origine);
+ typename C<Triangle<T> >::const_iterator& beginiter();
+ typename C<Triangle<T> >::const_iterator& enditer();
 
 };
+std::ostream& operator<<(std::ostream& out, const Maillage& m);
 
 
 #include "Maillage.tpp"
