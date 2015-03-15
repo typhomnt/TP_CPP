@@ -12,22 +12,22 @@ Maillage<T,C>::Maillage(int m, int n, const Point<T>& origine){
 	} 
 }
 
-template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
- typename C<Triangle<T> >::const_iterator Maillage<T,C>::beginiter() const{
- return (this->mesh).begin();
+template <typename T, template< typename,typename=std::allocator< Triangle<T> > > class C>
+typename C< Triangle<T> >::const_iterator Maillage<T,C>::beginiter() const{
+	return (this->mesh).begin();
 }
 
-template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
- typename C<Triangle<T> >::const_iterator Maillage<T,C>::enditer() const{
-  return (this->mesh).end();
+template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>
+typename C< Triangle<T> >::const_iterator Maillage<T,C>::enditer() const{
+	return (this->mesh).end();
 }
 
-template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>
 void Maillage<T,C>::fusionner(const Maillage<T,C>& m){
 
  }
 
-template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>
 std::ostream& operator<<(std::ostream& out, const Maillage<T,C>& m) {
 	     for(typename C<Triangle<T> >::const_iterator it = m.beginiter() ; it != m.enditer() ; ++it){
 	       out << (it->p1()).x() << " " << (it->p1()).y() <<  std::endl;

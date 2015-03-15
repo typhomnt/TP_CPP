@@ -8,21 +8,23 @@
 #include <string.h>
 #include "Triangle.h"
 
-template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
-	class Maillage {
- private:
+template <typename T, template< typename,typename=std::allocator< Triangle<T> > > class C>
+class Maillage {
+	private:
  
-	C<Triangle<T> > mesh;
+		C< Triangle<T> > mesh;
  
- public:
- Maillage(int m, int n, const Point<T>& origine);
- typename C<Triangle<T> >::const_iterator beginiter() const;
- typename C<Triangle<T> >::const_iterator enditer() const;
- void fusionner(const Maillage<T,C>& m);
+	public:
+
+		Maillage(int m, int n, const Point<T>& origine);
+		typename C< Triangle<T> >::const_iterator beginiter() const;
+		typename C< Triangle<T> >::const_iterator enditer() const;
+		void fusionner(const Maillage<T,C>& m);
 
 };
-template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
-	std::ostream& operator<<(std::ostream& out, const Maillage<T,C>& m);
+
+template <typename T, template< typename,typename=std::allocator< Triangle<T> > > class C>
+std::ostream& operator<<(std::ostream& out, const Maillage<T,C>& m);
 
 
 #include "Maillage.tpp"
