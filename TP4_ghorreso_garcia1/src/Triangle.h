@@ -21,9 +21,9 @@ public:
 	Triangle(const Point<Type>& a, const Point<Type>& b, const Point<Type>& c);
 	Triangle(const Triangle<Type>& t);
 
-	Point<Type>& p1();
-	Point<Type>& p2();
-	Point<Type>& p3();
+	const Point<Type>& p1() const;
+	const Point<Type>& p2() const;
+	const Point<Type>& p3() const;
 };
 
 #include "Triangle.tpp"

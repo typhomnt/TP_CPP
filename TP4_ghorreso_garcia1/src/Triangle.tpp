@@ -24,16 +24,16 @@ Triangle<Type>::Triangle(const Triangle & t) {
 }
 
 template <typename Type>
-Point<Type>& Triangle<Type>::p1() {
+const Point<Type>& Triangle<Type>::p1() const{
 	return this->a;
 }
 
 template <typename Type>
-Point<Type>& Triangle<Type>::p2() {
+const Point<Type>& Triangle<Type>::p2() const{
 	return this->b;
 }
 
 template <typename Type>
-Point<Type>& Triangle<Type>::p3() {
+const Point<Type>& Triangle<Type>::p3() const{
 	return this->c;
 }
