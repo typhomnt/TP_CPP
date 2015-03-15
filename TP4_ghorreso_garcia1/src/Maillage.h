@@ -8,7 +8,7 @@
 #include <string.h>
 #include "Triangle.h"
 
-template <typename T, template<typename,typename=std::allocator<T> > class C>
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
 	class Maillage {
  private:
  
@@ -18,10 +18,10 @@ template <typename T, template<typename,typename=std::allocator<T> > class C>
  Maillage(int m, int n, const Point<T>& origine);
  typename C<Triangle<T> >::const_iterator beginiter() const;
  typename C<Triangle<T> >::const_iterator enditer() const;
- void fusionner(const Mailllage<T,C>& m);
+ void fusionner(const Maillage<T,C>& m);
 
 };
-template <typename T,template<typename,typename=std::allocator<T>  > class C>
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
 	std::ostream& operator<<(std::ostream& out, const Maillage<T,C>& m);
 
 
