@@ -28,6 +28,30 @@ void Maillage<T,C>::fusionner(const Maillage<T,C>& m){
  }
 
 template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>
+void Maillage<T,C>::transformer(double m11, double m12, double m21, double m22) {
+	typename C< Triangle<T> >::const_iterator it;
+	for (it = this->beginiter(); it != this->enditer(); it++) {
+		it->transformer(m11,m12,m21,m22);
+	}
+}
+
+template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>
+void Maillage<T,C>::deplacer(double dx, double dy) {
+	typename C< Triangle<T> >::const_iterator it;
+	for (it = this->beginiter(); it != this->enditer(); it++) {
+		it->deplacer(dx,dy);
+	}
+}
+
+template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>
+void Maillage<T,C>::tourner(double angle, const Point<T>& pt) {
+	typename C< Triangle<T> >::const_iterator it;
+	for (it = this->beginiter(); it != this->enditer(); it++) {
+		it->tourner(angle, pt);
+	}
+}
+
+template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>
 std::ostream& operator<<(std::ostream& out, const Maillage<T,C>& m) {
 	     for(typename C<Triangle<T> >::const_iterator it = m.beginiter() ; it != m.enditer() ; ++it){
 	       out << (it->p1()).x() << " " << (it->p1()).y() <<  std::endl;

@@ -27,6 +27,9 @@ public:
 	Point(const Point<T>& p);
 	T x() const;
 	T y() const;
+	void transformer(double m11, double m12, double m21, double m22);
+	void deplacer(double dx, double dy);
+	void tourner(double angle, const Point<T>& pt);
 };
 
 #include "Point.tpp"

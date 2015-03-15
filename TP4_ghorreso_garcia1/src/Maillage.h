@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "Triangle.h"
+#include "Point.h"
 
 template <typename T, template< typename,typename=std::allocator< Triangle<T> > > class C>
 class Maillage {
@@ -20,6 +21,9 @@ class Maillage {
 		typename C< Triangle<T> >::const_iterator beginiter() const;
 		typename C< Triangle<T> >::const_iterator enditer() const;
 		void fusionner(const Maillage<T,C>& m);
+		void transformer(double m11, double m12, double m21, double m22);
+		void deplacer(double dx, double dy);
+		void tourner(double angle, const Point<T>& pt);
 
 };
 
