@@ -14,10 +14,19 @@ class Maillage {
 	private:
  
 		C< Triangle<T> > mesh;
+		Point<T> p1;
+		Point<T> p2;
+		Point<T> p3;
+		Point<T> p4;
+
+		T distance(const Point<T>& p1, const Point<T>& p2);
+		void fillMesh(double m, double mStep, double n, double nStep, const Point<T>& origine);
  
 	public:
 
 		Maillage(int m, int n, const Point<T>& origine);
+		Maillage(const Point<T>& p1, const Point<T>& p2, const Point<T>& p3,
+				const Point<T>& p4, int m, int n);
 		typename C< Triangle<T> >::const_iterator beginiter() const;
 		typename C< Triangle<T> >::const_iterator enditer() const;
 		void fusionner(const Maillage<T,C>& m);
