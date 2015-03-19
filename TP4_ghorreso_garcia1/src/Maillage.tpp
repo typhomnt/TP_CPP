@@ -6,11 +6,18 @@
 template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
 Maillage<T,C>::Maillage(int m, int n, const Point<T>& origine){
 	fillMesh(m,1,n,1,origine);
+	this->m = m;
+	this->n = n;
+	this->lStep = 1.0;
+	this->hStep = 1.0;
 }
 
 template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
 Maillage<T,C>::Maillage(const Point<T>& p1, const Point<T>& p2, const Point<T>& p3,
 				const Point<T>& p4, int m, int n) {
+	if(abs(distance(p1,p4) - distance(p2,p3)) > pow(10,-8) || abs(distance(p1,p2) - distance(p3,p4)) > pow(10,-8) 
+	|| abs(distance(p1,p3) - distance(p2,p4)) > pow(10,-8))
+	   throw std::invalid_argument("the given points don't represent rectangle");
 	T largeur = distance(p1,p2);
 	T hauteur = distance(p1,p4);
 	std::cout << largeur << std::endl;
@@ -22,6 +29,10 @@ Maillage<T,C>::Maillage(const Point<T>& p1, const Point<T>& p2, const Point<T>& 
 	this->fillMesh(largeur,lStep,hauteur,hStep,p1);
 	double angle = atan((p2.y()-p1.y())/(p2.x()-p1.x()));
 	this->tourner(angle,p1);
+	this->m = m;
+	this->n = n;
+	this->lStep = lStep;
+	this->hStep = hStep;
 }
 
 template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
@@ -59,6 +70,32 @@ typename C< Triangle<T> >::const_iterator Maillage<T,C>::enditer() const{
 
 template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>
 void Maillage<T,C>::fusionner(const Maillage<T,C>& m){
+     	if(m.m != this->m && m.n != this->n)
+     	    	throw std::invalid_argument("meshes must have at least m or n in cummon to be merged");
+	if(m.lStep != this->lStep && m.hStep != this->hStep)
+		throw std::invalid_argument("meshes must have at least lStep or hStep in cummon to be merged");
+	if(this->xMax() > m.xMin() &&  this->xMin() < m.xMin() && this->yMin() < m.yMax() && this->yMax > m.yMax())
+		throw std::invalid_argument("meshes are overlapping each other");	
+	if(this->p4 = m.p1 && this->p3 = m.p2 && this->lStep = m.lStep){
+		    this->p4 = m.p4;
+		    this->p3 = m.p3;
+	}  
+	else if(this->p1 = m.p4 && this->p2 = m.p3 && this->lStep = m.lStep){
+	     	    this->p1 = m.p1;
+		    this->p2 = m.p2;
+	}
+ 	else if (this->p1 = m.p2 && this->p4 = m.p3 && this->hStep = m.hStep){
+	     	    this->p1 = m.p1;
+		    this->p4 = m.p4;	 
+	}
+	else if(this->p2 = m.p1 && this->p3 = m.p4 && this->hStep = m.hStep) {
+	     	    this->p2 = m.p2;
+		    this->p3 = m.p3;
+	} 
+	else{
+		throw std::invalid_argument("meshes are not compatible");	
+	}
+	merge(this->beginiter(),this->enditer(),m.beginiter(),m.enditer(),this->mesh);	
 
  }
 
@@ -110,3 +147,50 @@ std::ostream& operator<<(std::ostream& out, const Maillage<T,C>& m) {
 	     return out;
 }
 
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+T Maillage<T,C>::xMax(){
+  T max = p1.x();
+  if(p2.x() > max)
+  	  max = p2.x();
+  if(p3.x() > max)
+  	  max = p3.x();
+  if(p4.x() > max)
+  	  max = p4.x();
+  return max;	
+}
+
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+T Maillage<T,C>::xMin(){
+   T min = p1.x();
+  if(p2.x() < min)
+  	  min = p2.x();
+  if(p3.x() < min)
+  	  min = p3.x();
+  if(p4.x() < min)
+  	  min = p4.x();
+  return min;
+}
+
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+T Maillage<T,C>::yMax(){
+   T max = p1.y();
+  if(p2.y() > max)
+  	  max = p2.y();
+  if(p3.y() > max)
+  	  max = p3.y();
+  if(p4.y() > max)
+  	  max = p4.y();
+  return max;
+}
+
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+T Maillage<T,C>::yMin(){
+    T min = p1.y();
+  if(p2.y() < min)
+  	  min = p2.y();
+  if(p3.y() < min)
+  	  min = p3.y();
+  if(p4.y() < min)
+  	  min = p4.y();
+  return min;
+}
