@@ -95,7 +95,7 @@ void Maillage<T,C>::fusionner(const Maillage<T,C>& m){
 	else{
 		throw std::invalid_argument("meshes are not compatible");	
 	}
-	merge(this->beginiter(),this->enditer(),m.beginiter(),m.enditer(),this->mesh);	
+	std::merge(this->begin(),this->end(),m.beginiter(),m.enditer(),this->mesh);	
 
  }
 
