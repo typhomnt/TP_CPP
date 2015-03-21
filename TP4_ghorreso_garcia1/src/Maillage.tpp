@@ -106,7 +106,8 @@ void Maillage<T,C>::fusionner(const Maillage<T,C>& m){
 	//this->mesh.resize(this->mesh.size() + m.mesh.size());
 	//std::merge(this->mesh.begin(),this->mesh.end(),m.beginiter(),m.enditer(),typename C< Triangle<T> >::ostream_iterator<T>(std::cout," "));
 	std::cout << "fusion" << std::endl;
-	this->concat(this->mesh, m.mesh);
+	//this->concat(this->mesh, m.mesh);
+	this->mesh.insert(this->mesh.begin(), m.beginiter(), m.enditer());
  }
 
 template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>

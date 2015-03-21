@@ -54,7 +54,7 @@ void testFusion1() {
 	Maillage<double, std::vector> m2(Point<double>(1,3), Point<double>(4,3),
 			Point<double>(4,6), Point<double>(1,6), 12, 5);
 	m1.fusionner(m2);
-	testFile << m2;
+	testFile << m1;
 }
 int main() {
 	//testMaillageContr2();
