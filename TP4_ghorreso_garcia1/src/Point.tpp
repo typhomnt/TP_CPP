@@ -50,3 +50,8 @@ void Point<T>::tourner(double angle, const Point<T>& pt) {
 	this->transformer(cos(angle), sin(angle), -sin(angle), cos(angle));
 	this->deplacer(pt.abs,pt.ord);
 }
+
+template <typename T>
+bool Point<T>::operator==(const Point<T> p) {
+	return this->abs == p.abs && this->ord == p.ord;
+}

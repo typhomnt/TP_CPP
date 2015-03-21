@@ -30,6 +30,7 @@ public:
 	void transformer(double m11, double m12, double m21, double m22);
 	void deplacer(double dx, double dy);
 	void tourner(double angle, const Point<T>& pt);
+	bool operator==(const Point<T> p);
 };
 
 #include "Point.tpp"

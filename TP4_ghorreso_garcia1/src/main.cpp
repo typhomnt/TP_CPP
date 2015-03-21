@@ -41,11 +41,23 @@ void testRotation() {
 void testMaillageContr2() {
 	string file("testMaillageConstr2.dat");
 	ofstream testFile(file.c_str());
-	Maillage<double	, std::vector> m(Point<double>(1,1), Point<double>(4,1), Point<double>(4,3), Point<double>(1,3), 12, 10);
+	Maillage<double	, std::vector> m(Point<double>(1,1), Point<double>(4,1),
+			Point<double>(4,3), Point<double>(1,3), 12, 10);
 	testFile << m;
 }
 
+void testFusion1() {
+	string file("testFusion1.dat");
+	ofstream testFile(file.c_str());
+	Maillage<double, std::vector> m1(Point<double>(1,1), Point<double>(4,1),
+			Point<double>(4,3), Point<double>(1,3), 12, 10);
+	Maillage<double, std::vector> m2(Point<double>(1,3), Point<double>(4,3),
+			Point<double>(4,6), Point<double>(1,6), 12, 5);
+	m1.fusionner(m2);
+	testFile << m2;
+}
 int main() {
-	testMaillageContr2();
+	//testMaillageContr2();
+	testFusion1();
 }
 
