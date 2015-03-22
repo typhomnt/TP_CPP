@@ -30,7 +30,6 @@ private:
 	T yMax() const;
 	T xMin() const;
 	T yMin() const;
-	void concat(C< Triangle<T> > mesh1, C< Triangle<T> > mesh2);
  
  public:
 
@@ -43,7 +42,11 @@ private:
 	void transformer(double m11, double m12, double m21, double m22);
 	void deplacer(double dx, double dy);
 	void tourner(double angle, const Point<T>& pt);
-
+	void display() const;
+	const Point<T>& point1() const;
+	const Point<T>& point2() const;
+	const Point<T>& point3() const;
+	const Point<T>& point4() const;
 };
 
 template <typename T, template< typename,typename=std::allocator< Triangle<T> > > class C>

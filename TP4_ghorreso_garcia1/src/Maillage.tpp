@@ -27,10 +27,6 @@ Maillage<T,C>::Maillage(const Point<T>& p1, const Point<T>& p2, const Point<T>& 
 	T hauteur = distance(p1,p4);
 	T lStep = largeur/(T)m;
 	T hStep = hauteur/(T)n;
-	std::cout << "hauteur = " << hauteur << std::endl;
-	std::cout << "largeur = " << largeur << std::endl;
-	std::cout << "hStep = " << hStep << std::endl;
-	std::cout << "lStep = " << lStep << std::endl;
 	this->fillMesh(m,lStep,n,hStep,p1);
 	double angle = atan((p2.y()-p1.y())/(p2.x()-p1.x()));
 	this->tourner(angle,p1);
@@ -47,8 +43,10 @@ T Maillage<T,C>::distance(const Point<T>& p1, const Point<T>& p2){
 
 template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
 void Maillage<T,C>::fillMesh(int m, double lStep, int n, double hStep, const Point<T>& origine){
-	if (lStep <= 0 || hStep <= 0)
+	if (m <= 0 || n <= 0)
 		throw std::invalid_argument("m and n must not be negative");
+	if (lStep <= 0 || hStep <= 0)
+		throw std::invalid_argument("lStep and hStep must not be negative");
 	T x = origine.x();
 	T y = origine.y();
 	for(int i = 0 ; i < m ; i++){
@@ -105,8 +103,6 @@ void Maillage<T,C>::fusionner(const Maillage<T,C>& m){
 	}
 	//this->mesh.resize(this->mesh.size() + m.mesh.size());
 	//std::merge(this->mesh.begin(),this->mesh.end(),m.beginiter(),m.enditer(),typename C< Triangle<T> >::ostream_iterator<T>(std::cout," "));
-	std::cout << "fusion" << std::endl;
-	//this->concat(this->mesh, m.mesh);
 	this->mesh.insert(this->mesh.begin(), m.beginiter(), m.enditer());
  }
 
@@ -120,6 +116,11 @@ void Maillage<T,C>::transformer(double m11, double m12, double m21, double m22) 
 	(this->p2).transformer(m11,m12,m21,m22);
 	(this->p3).transformer(m11,m12,m21,m22);
 	(this->p4).transformer(m11,m12,m21,m22);
+
+	Triangle<T> t1 = *(this->beginiter());
+	Triangle<T> t2 = *(this->beginiter() + 1);
+	this->lStep = t2.p1().x() - t1.p1().x();
+	this->hStep = t2.p1().y() - t1.p1().y();
 }
 
 template <typename T, template<typename,typename=std::allocator< Triangle<T> > > class C>
@@ -207,11 +208,30 @@ T Maillage<T,C>::yMin() const {
 }
 
 template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
-void Maillage<T,C>::concat(C< Triangle<T> > mesh1, C< Triangle<T> > mesh2) {
-	typename C< Triangle<T> >::iterator it;
-	std::cout << "concat" << std::endl;
-	mesh1.end() = mesh2.end();
-	for (it = mesh2.begin(); it != mesh2.end(); it++) {
-		mesh1.push_back(Triangle<T>(*it));
-	}
+void Maillage<T,C>::display() const {
+	std::cout << "Maillage :" << std::endl;
+	std::cout << "m = " << m << std::endl;
+	std::cout << "n = " << n << std::endl;
+	std::cout << "lStep = " << lStep << std::endl;
+	std::cout << "hStep = " << hStep << std::endl;
+}
+
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+const Point<T>& Maillage<T,C>::point1() const {
+	return p1;
+}
+
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+const Point<T>& Maillage<T,C>::point2() const {
+	return p2;
+}
+
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+const Point<T>& Maillage<T,C>::point3() const {
+	return p3;
+}
+
+template <typename T, template<typename,typename=std::allocator<Triangle<T> > > class C>
+const Point<T>& Maillage<T,C>::point4() const {
+	return p4;
 }
